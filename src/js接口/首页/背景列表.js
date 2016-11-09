@@ -1,0 +1,70 @@
+/**
+ * 背景列表
+ */
+// 地址 	{站点根目录}front/list_pub.do
+// 请求方式 get/post 
+/**
+ * 参数说明
+ * 
+ * page  						页码
+ * pageSize						每页数量
+ * pubConlumnId 				产品分类
+ * secondPubConlumnId			二级分类
+ * thirdPubConlumnId			三级分类
+ */
+/**
+ * 参数值
+ * 
+ * rootPubConlumnId			58214a7dd6c45965757937d9	//背景
+ */
+// 返回样例 {"statusCode":"300","message":"错误原因！"}//错误
+// 返回结果
+var result = {
+		"data" : [
+					{
+						"id" : "5822e1f978e0802b1109c73e",
+						"pub_id" : "5822e1f978e0802b1109c73e",
+						"name" : "画框1",
+						"state" : "1",
+						"viewcount" : "0",
+						"nice_count" : "0",
+						"shoucang_count" : "0",
+						"pic" : "attachFiles/20161108/58215ea5d6c45965757937e8/5822cda0ef722c1d9e03cc61",
+						"showTime" : "2016-11-09 16:44:41",
+						"rootPubConlumnId" : "58214a83d6c45965757937da",
+						"rootPubConlumnName" : "画框",
+						"secondPubConlumnId" : "58214abdd6c45965757937e5",
+						"secondPubConlumnName" : "画框默认分类",
+						"comment_list" : [],
+						"width" : "198",
+						"height" : "300",
+						"position_x" : "22",
+						"position_y" : "23"
+					},
+					{
+						"id" : "5822e1f978e0802b1109c73d",
+						"pub_id" : "5822e1f978e0802b1109c73d",
+						"name" : "画框1",
+						"state" : "1",
+						"viewcount" : "0",
+						"nice_count" : "0",
+						"shoucang_count" : "0",
+						"pic" : "attachFiles/20161109/5822e1cc78e0802b1109c721/5822cda0ef722c1d9e03cc61",
+						"showTime" : "2016-11-09 16:44:41",
+						"rootPubConlumnId" : "58214a83d6c45965757937da",
+						"rootPubConlumnName" : "画框",
+						"secondPubConlumnId" : "58214abdd6c45965757937e5",
+						"secondPubConlumnName" : "画框默认分类",
+						"comment_list" : [],
+						"width" : "198",
+						"height" : "300",
+						"position_x" : "22",
+						"position_y" : "23"
+					} ],
+			"page" : "1",
+			"lastPage" : "2",
+			"pageSize" : "15",
+			"count" : "16",
+			"statusCode" : "200",
+			"message" : "返回成功!"
+		}

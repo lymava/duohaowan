@@ -28,11 +28,11 @@
 var result = {
 		"data" : [
 					{
-						"picname" : "attachFiles/temp/581b0915d6c45925f82e4915",
+						"picname" : "attachFiles/temp/581b0915d6c45925f82e4915",//头像
 						"realname" : "张景岳",
 						"artistCard_id" : "5815bbafd6c459747a637851",
 						"artist_id" : "581b0916d6c45925f82e4916",
-						"pic" : "attachFiles/20161030/5815bbafd6c459747a637851/5815bbaed6c459747a637850",//头像
+						"pic" : "attachFiles/20161030/5815bbafd6c459747a637851/5815bbaed6c459747a637850",
 						"pic_back" : "attachFiles/20161030/5815bbafd6c459747a637851/5815bbaed6c459747a637850",//名片背景
 						"intro" : "5YiY5Lyv6aqP",//作家简介1
 						"state" : "1",

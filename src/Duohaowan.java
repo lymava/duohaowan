@@ -12,11 +12,11 @@ public class Duohaowan {
 	 /**
 	  * 服务器地址
 	  */
-	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
+//	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
 	 /**
 	  * 本地地址
 	  */
-//	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
+	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
 	 
 	 public static  Map<String,String> entityParemeter_map = new HashMap<String,String>();
 	 
@@ -72,11 +72,40 @@ public class Duohaowan {
 //		 System.out.println(shoucang_pub);
 		 
 		 //作家列表页
-		 entityParemeter_map.put("secondPubConlumnId", "581407b20e9f110d8cbbdb94");
-		 entityParemeter_map.put("tag_string", "书法家");
-		 String listPub = listPub();
-		 System.out.println(listPub); 
+//		 entityParemeter_map.put("secondPubConlumnId", "581407b20e9f110d8cbbdb94");
+//		 entityParemeter_map.put("tag_string", "书法家");
+//		 String listPub = listPub();
+//		 System.out.println(listPub); 
+		 //背景列表
+//		 String list_backgroundWall = list_backgroundWall();
+//		 System.out.println(list_backgroundWall); 
+		 //画框列表
+		 String list_paintingFrame = list_paintingFrame();
+		 System.out.println(list_paintingFrame); 
 	 } 
+	 
+	 /**
+		 * 画框列表
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String list_paintingFrame() throws Exception{
+			 entityParemeter_map.put("rootPubConlumnId", "58214a83d6c45965757937da");
+			 String listPub = listPub();
+			 return listPub;
+		}
+	 /**
+		 * 背景列表
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String list_backgroundWall() throws Exception{
+			 entityParemeter_map.put("rootPubConlumnId", "58214a7dd6c45965757937d9");
+			 String listPub = listPub();
+			 return listPub;
+		}
 	 	/**
 		 * 收藏资讯
 		 * 
@@ -192,7 +221,7 @@ public class Duohaowan {
 			
 			String encodeHexString = HexM.encodeHexString(readByte);
 			
-			jsonObject.addProperty("pic", encodeHexString);
+			jsonObject.addProperty("pic", "<file>"+encodeHexString+"</file>");
 			jsonObject.addProperty("idCard", "证件号码");
  
 			String send_user_data = send_user_data(urlString, jsonObject.toString());
