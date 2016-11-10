@@ -5,15 +5,17 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -25,7 +27,7 @@ public class ImageUtil {
 		
 //		resizeMax(srcImageFile, result, 500, 500);
 		
-		File file = new File("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/背景.jpg");
+		File file = new File("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/huakuang.jpg");
 //		
 		File file_zuopin = new File("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/zuopin.jpg");
 //		
@@ -33,26 +35,44 @@ public class ImageUtil {
 //		
 		BufferedImage backGroudImage = ImageIO.read(file);
 		
+		List<Rectangle> searchRectangleList = searchRectangleList(backGroudImage);
+		
+		Rectangle findRectangle = searchRectangleList.get(0);
+		
+		System.out.println(findRectangle);
+		
 		BufferedImage bufferedImage_input = ImageIO.read(file_zuopin);
+		
+		Double suofang = null;
 		 
-		
-		BufferedImage imageSynthesis = imageSynthesis(backGroudImage, bufferedImage_input);
-		
-//		
+		BufferedImage imageSynthesis = imageSynthesis(backGroudImage, bufferedImage_input,findRectangle,suofang);
+
 		boolean hasNotAlpha = !backGroudImage.getColorModel().hasAlpha();
-//		
-//		Integer width_zuopin = 242;
-//		Integer height_zuopin = 346;
-//		
-//		Integer x_zuopin = 208;
-//		Integer y_zuopin = 66; 
-//		
-//		BufferedImage imageSynthesis = watermark(read, bufferedImage_zuopin);
-//        
+		
         ImageIO.write(imageSynthesis, hasNotAlpha ? "jpg" : "png", file_zuopin_out);
 	}
 	
-    public static boolean write(BufferedImage bufferedImage, String formatName, OutputStream output) throws IOException {
+	public static  BufferedImage imageSynthesis(BufferedImage backGroudImage,BufferedImage bufferedImage_input,Rectangle findRectangle,Double suofang){
+		
+		Image scaledInstanceMax = bufferedImage_input;
+		
+		Rectangle resizeRectangle  = findRectangle;
+		
+		if(suofang != null && suofang > 0 && suofang != 1){
+			resizeRectangle = resizeRectangle(findRectangle, suofang);
+		}
+		
+//		if(bufferedImage_input.getWidth() != resizeRectangle.getWidth() || bufferedImage_input.getHeight() != resizeRectangle.getHeight()){
+//			scaledInstanceMax = getScaledInstanceMax(bufferedImage_input, resizeRectangle);
+//		}
+		
+		BufferedImage imageSynthesis = imageSynthesis(backGroudImage, scaledInstanceMax,resizeRectangle);
+		
+		return imageSynthesis;
+	}
+	
+	
+    public static boolean write(BufferedImage bufferedImage, OutputStream output) throws IOException {
     	
     	boolean hasNotAlpha = !bufferedImage.getColorModel().hasAlpha();
     	
@@ -60,8 +80,56 @@ public class ImageUtil {
     	 
     	return write;
     }
-	
-	public static Rectangle searchRectangle(BufferedImage bufferedImage){
+    
+    public static Rectangle searchRectangleOne(BufferedImage bufferedImage){
+    	 List<Rectangle> searchRectangleList = searchRectangleList(bufferedImage);
+    	 if(searchRectangleList != null && searchRectangleList.size() > 0){
+    		 return searchRectangleList.get(0);
+    	 }
+    	 return null;
+    }
+    
+    public static List<Rectangle> searchRectangleList(BufferedImage bufferedImage){
+    	
+    	List<Rectangle> list_searchRectangle = new LinkedList<Rectangle>();
+    	
+		Rectangle searchRectangle = ImageUtil.searchRectangle(bufferedImage,list_searchRectangle);
+		
+		while(searchRectangle != null){
+			
+				boolean intersects =  false; 
+				//做碰撞检测
+				for (Rectangle rectangle_tmp : list_searchRectangle) {
+					intersects = rectangle_tmp.intersects(searchRectangle);
+					if(intersects){
+						int min_x = Math.min((int)searchRectangle.getX(), (int)rectangle_tmp.getX());
+						int min_y = Math.min((int)searchRectangle.getY(), (int)rectangle_tmp.getY());
+						
+						int max_width 	= Math.max((int)searchRectangle.getWidth(), (int)rectangle_tmp.getWidth());
+						int max_height 	= Math.max((int)searchRectangle.getHeight(), (int)rectangle_tmp.getHeight());
+						 
+						rectangle_tmp.setBounds(min_x, min_y, max_width+1, max_height+1);
+						break;
+					}
+				}
+			if(!intersects){
+				list_searchRectangle.add(searchRectangle);
+			}
+			
+			searchRectangle = ImageUtil.searchRectangle(bufferedImage,list_searchRectangle);
+		}
+		//搜索出的结果合并
+		
+		return list_searchRectangle;
+    }
+    
+    /**
+     * 
+     * @param bufferedImage
+     * @param list_searchRectangle_notIn 不在这些框内内找
+     * @return
+     */
+    public static Rectangle searchRectangle(BufferedImage bufferedImage,List<Rectangle> list_searchRectangle_notIn){
 		int white_rgb = Color.white.getRGB();
 		
 		int width = bufferedImage.getWidth();
@@ -71,19 +139,45 @@ public class ImageUtil {
 		
 		for(int x=0;x<width;x++){
 			for(int y=0;y<height;y++){
-				 int rgb = bufferedImage.getRGB(x, y);
-		          if(white_rgb == rgb){
-		        	  findRectangle = findRectangle(bufferedImage, x, y);
-		        	  if(findRectangle != null && findRectangle.getWidth() > 50 && findRectangle.getHeight() > 50){
-		        		  break;
-		        	  }
-		          }
+				
+				boolean contains = false;
+				
+				if(list_searchRectangle_notIn != null){
+					
+					Point point = new Point(x, y);
+					
+					for (Rectangle rectangle : list_searchRectangle_notIn) {
+						contains = rectangle.contains(point);
+						if(contains){
+							break;
+						}
+					}
+				}
+				if(!contains){
+					 int rgb = bufferedImage.getRGB(x, y);
+			          if(white_rgb == rgb){
+			        	  findRectangle = findRectangle(bufferedImage, x, y);
+			        	  if(findRectangle != null && findRectangle.getWidth() > 50 && findRectangle.getHeight() > 50){
+			        		  break;
+			        	  }
+			          }
+				}
+				
 			}
 			if(findRectangle != null && findRectangle.getWidth() > 50 && findRectangle.getHeight() > 50){
       		  break;
       	  	}
 		}
+		
+		if(findRectangle == null || findRectangle.getWidth() < 50 || findRectangle.getHeight() < 50){
+			findRectangle = null;
+    	 }
+		
 		return findRectangle;
+	}
+	public static Rectangle searchRectangle(BufferedImage bufferedImage){
+		Rectangle searchRectangle = searchRectangle(bufferedImage,null);
+		return searchRectangle;
 	}
 	
 	public static Rectangle findRectangle(BufferedImage bufferedImage,int x,int y){
@@ -126,7 +220,7 @@ public class ImageUtil {
 				          int green = (rgb & 0xff00 ) >> 8 ;
 				          int blue = (rgb & 0xff );
 						
-					    if(red < 250 || green < 250 || blue < 250){
+					    if(red < 220 || green < 220 || blue < 220){
 					    	height_ok = true;
 					    	break;
 				        }
@@ -144,7 +238,7 @@ public class ImageUtil {
 				          int green = (rgb & 0xff00 ) >> 8 ;
 				          int blue = (rgb & 0xff );
 						
-					    if(red < 250 || green < 250 || blue < 250){
+					    if(red < 220 || green < 220 || blue < 220){
 					    	width_ok = true;
 					    	break;
 				        }
@@ -194,6 +288,28 @@ public class ImageUtil {
         graphics.dispose();
         return backGroudImage;
 	}
+	
+	public static Rectangle resizeRectangle(Rectangle rectangle,Double bili){
+	
+		int x = (int) rectangle.getX();
+		
+		int y = (int) rectangle.getY();
+		
+		int height = (int) rectangle.getHeight();
+		
+		int width = (int) rectangle.getWidth();
+		
+		x += width*(1-bili)/2;
+		y += height*(1-bili)/2;
+		
+		height = (int) (height*bili);
+		width = (int) (width*bili);
+		
+		Rectangle rectangle_return = new Rectangle(x, y, width, height);
+		
+		return rectangle_return;
+	}
+	
 	/**
 	 * 图片合成
 	 * @param backGroudImage	图片背景 原图
@@ -204,9 +320,10 @@ public class ImageUtil {
 	 * @param height	合成图的高
 	 * @return	合成后的 BufferedImage	被合成的图像会自动居中
 	 */
-	public static BufferedImage imageSynthesis(BufferedImage backGroudImage,BufferedImage bufferedImage_input){
+	public static BufferedImage imageSynthesis(BufferedImage backGroudImage,Image bufferedImage_input){
 		Rectangle findRectangle = searchRectangle(backGroudImage);
 		imageSynthesis(backGroudImage, bufferedImage_input,findRectangle);
+		
         return backGroudImage;
 	}
 	/**
@@ -219,7 +336,7 @@ public class ImageUtil {
 	 * @param height	合成图的高
 	 * @return	合成后的 BufferedImage	被合成的图像会自动居中
 	 */
-	public static BufferedImage imageSynthesis(BufferedImage backGroudImage,BufferedImage bufferedImage_input,Rectangle findRectangle){
+	public static BufferedImage imageSynthesis(BufferedImage backGroudImage,Image bufferedImage_input,Rectangle findRectangle){
 		
 		
 		Integer width_zuopin = (int) findRectangle.getWidth();
@@ -248,6 +365,34 @@ public class ImageUtil {
         graphics.dispose();
 		
         return backGroudImage;
+	} 
+	/**
+	 * 根据根据最大宽高 保持比例缩放图片
+	 * @param image
+	 * @param max_width
+	 * @param max_height
+	 * @return
+	 */
+	public static Image  getScaledInstanceMax(Image image,Rectangle rectangle){
+		
+		double max_width = rectangle.getWidth();
+		double max_height = rectangle.getHeight();
+		
+		double width = image.getWidth(null);
+		double height = image.getHeight(null);
+		
+		if(width > max_width){
+			height = max_width/width * height;
+			width = max_width;
+		} 
+		
+		if(height > max_height){
+			width = max_height/height * width;
+			height = max_height;
+		} 
+		
+		Image scaledInstance = image.getScaledInstance((int)width, (int)height, Image.SCALE_SMOOTH);
+		return scaledInstance;
 	}
 	/**
 	 * 根据根据最大宽高 保持比例缩放图片
@@ -425,6 +570,7 @@ public class ImageUtil {
             graphics.dispose();
             ImageIO.write(tag, hasNotAlpha ? "jpg" : "png", output);
         } catch (Exception e) {
+        	e.printStackTrace();
             throw e;
         } finally {
         	if(output != null){
@@ -471,6 +617,7 @@ public class ImageUtil {
             
             ImageIO.write(tag, hasAlpha ? "png" : "jpg", output);
         } catch (Exception e) {
+        	e.printStackTrace();
             throw new Exception(e);
         } finally {
         	if(input != null){
