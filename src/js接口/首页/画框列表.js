@@ -15,7 +15,7 @@
 /**
  * 参数值
  * 
- * rootPubConlumnId			58214a7dd6c45965757937d9	//背景
+ * rootPubConlumnId			58214a83d6c45965757937da	//画框
  */
 // 返回样例 {"statusCode":"300","message":"错误原因！"}//错误
 // 返回结果
