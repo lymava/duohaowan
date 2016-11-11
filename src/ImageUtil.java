@@ -27,7 +27,8 @@ public class ImageUtil {
 		
 //		resizeMax(srcImageFile, result, 500, 500);
 		
-		File file = new File("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/huakuang.jpg");
+		
+		File file = new File("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/画框新.jpg");
 //		
 		File file_zuopin = new File("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/zuopin.jpg");
 //		
@@ -50,6 +51,24 @@ public class ImageUtil {
 		boolean hasNotAlpha = !backGroudImage.getColorModel().hasAlpha();
 		
         ImageIO.write(imageSynthesis, hasNotAlpha ? "jpg" : "png", file_zuopin_out);
+	}
+	
+	public static BufferedImage readBufferedImage(String path){
+		
+		File file = new File(path);
+		
+		if(!file.exists()){
+			return null;
+		}
+		
+		BufferedImage read = null;
+		try {
+			
+			read = ImageIO.read(file);
+			
+		} catch (IOException e) {
+		}
+		return read;
 	}
 	
 	public static  BufferedImage imageSynthesis(BufferedImage backGroudImage,BufferedImage bufferedImage_input,Rectangle findRectangle,Double suofang){
@@ -155,6 +174,7 @@ public class ImageUtil {
 				}
 				if(!contains){
 					 int rgb = bufferedImage.getRGB(x, y);
+			          
 			          if(white_rgb == rgb){
 			        	  findRectangle = findRectangle(bufferedImage, x, y);
 			        	  if(findRectangle != null && findRectangle.getWidth() > 50 && findRectangle.getHeight() > 50){

@@ -1,8 +1,11 @@
+import java.awt.Rectangle;
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.Set;
@@ -79,10 +82,96 @@ public class Duohaowan {
 		 //背景列表
 //		 String list_backgroundWall = list_backgroundWall();
 //		 System.out.println(list_backgroundWall); 
+		 //画框列表
+//		 String list_paintingFrame = list_paintingFrame();
+//		 System.out.println(list_paintingFrame); 
 		 //卡纸列表
-		 String list_kazhi = list_kazhi();
-		 System.out.println(list_kazhi); 
+//		 String list_kazhi = list_kazhi();
+//		 System.out.println(list_kazhi); 
+		 //发布展品
+		 String publish_artworks = publish_artworks();
+		 System.out.println(publish_artworks); 
+		 
+		 
 	 } 
+	 
+	 	/**
+		 * 发布展品
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String publish_artworks() throws Exception {
+
+			String urlString = baseUrl + "face/user/publish_artworks.do";
+			
+			JsonObject jsonObject = new JsonObject();
+			
+			jsonObject.addProperty("name", "作品名称");
+			jsonObject.addProperty("years", "年份作品简介");
+			jsonObject.addProperty("intro", "作品简介");
+			jsonObject.addProperty("price_fen", "100");
+			jsonObject.addProperty("true_width", "100");//真实尺寸 厘米
+			jsonObject.addProperty("true_height", "500");//真实尺寸 厘米
+			jsonObject.addProperty("pubConlumnId","5812ef8078e0802052dd7a31");
+			/**
+			 * 5812ef8078e0802052dd7a31 绘画作品
+			 * 5812ef7878e0802052dd7a30	书法作品
+			 */
+			jsonObject.addProperty("backgroundWall_id","582166a1ef722c1052bbba04");
+			
+			JsonArray artworksCompoment = new JsonArray();
+			
+			jsonObject.add("artworksCompoment", artworksCompoment);
+			
+
+			JsonObject jsonObject_part = createZuop();
+			JsonObject jsonObject_part_1 = createZuop();
+			
+			
+			artworksCompoment.add(jsonObject_part);
+			artworksCompoment.add(jsonObject_part_1);
+			
+			System.out.println(jsonObject);
+			
+
+			String send_user_data = send_user_data(urlString, jsonObject.toString());
+
+			return send_user_data;
+		}
+		
+		public static JsonObject createZuop() throws IOException{
+			JsonObject jsonObject_part  = new JsonObject();
+			
+			byte[] readByte = IOUtil.readByte("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/zuopin.jpg");
+			String encodeHexString = HexM.encodeHexString(readByte);
+			jsonObject_part.addProperty("artworks_pic", "<file>"+encodeHexString+"</file>");
+			jsonObject_part.addProperty("kazhi_1_id", "582538d9ef722c174838109b");
+			jsonObject_part.addProperty("paintingFrame_id", "5822e1f978e0802b1109c73e");
+			
+			//绘画
+//			jsonObject_part.addProperty("pubConlumnId","5812ef7878e0802052dd7a30");//书法
+			
+			JsonObject artworks_position = new JsonObject();
+			
+			artworks_position.addProperty("x", "62");
+			artworks_position.addProperty("y", "63");
+			artworks_position.addProperty("width", "99");
+			artworks_position.addProperty("height", "150");
+			
+			jsonObject_part.add("artworks_position", artworks_position);
+			
+			JsonObject kazhi_1_pic_position = new JsonObject();
+			
+			kazhi_1_pic_position.addProperty("x", "60");
+			kazhi_1_pic_position.addProperty("y", "60");
+			kazhi_1_pic_position.addProperty("width", "105");
+			kazhi_1_pic_position.addProperty("height", "160");
+			
+			jsonObject_part.add("kazhi_1_pic_position", kazhi_1_pic_position);
+			
+			return jsonObject_part;
+		}
 	 /**
 		 * 卡纸列表
 		 * 

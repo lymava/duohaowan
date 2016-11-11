@@ -50,26 +50,17 @@ public class Aartworks {
 		long currentTimeMillis = System.currentTimeMillis();
 
 		
-		artworks.setArtworks_pic(artworks_pic_bufferedImage);
 		artworks.setBackgroundWall(artworks_beijing_bufferedImage);
 		artworks.setHuakuang(artworks_huakuang_bufferedImage);
 		artworks.setKazhi_1(artworks_kazhi1_bufferedImage);
 		artworks.setKazhi_2(artworks_kazhi2_bufferedImage);
 		
-		artworks.setArtworks_rectangle(artwork_rectangle);
 		artworks.setKazhi_1_position(kazhi1_rectangle);
 		artworks.setKazhi_2_position(kazhi2_rectangle);
 		artworks.setBackgroundWall_position(backgroundWall_position);
 		
 		BufferedImage finalBufferedImage = artworks.getFinalBufferedImage();
-		
-//		System.out.println(System.currentTimeMillis()-currentTimeMillis);
-//		
-//		FileOutputStream fos = new FileOutputStream(resource.getPath()+"/../../src/file/out.jpg");
-//		
-//		ImageUtil.write(finalBufferedImage, fos);
-//		
-//		System.out.println(System.currentTimeMillis()-currentTimeMillis);
+ 
 	}
 	
 	public BufferedImage getFinalBufferedImage(){
@@ -117,19 +108,7 @@ public class Aartworks {
 	 /**
 	  * 风格
 	  */
-	private String fengge;
-	
-	/**
-	 * 作品的图像
-	 */
-	private BufferedImage artworks_pic;
-	/**
-	 * 作品的位置
-	 * 当有画框的时候 这个是 作品在画框中的位置
-	 * 当没有画框有背景的时候 这个是 作品在作品中的位置
-	 * 当既没有画框又没有背景的时候这个失效
-	 */
-	private Rectangle artworks_rectangle;
+	private String fengge; 
 	/**
 	 * 图片宽度
 	 */
@@ -210,19 +189,7 @@ public class Aartworks {
 	}
 	public void setFengge(String fengge) {
 		this.fengge = fengge;
-	}
-	public BufferedImage getArtworks_pic() {
-		return artworks_pic;
-	}
-	public void setArtworks_pic(BufferedImage artworks_pic) {
-		this.artworks_pic = artworks_pic;
-	}
-	public Rectangle getArtworks_rectangle() {
-		return artworks_rectangle;
-	}
-	public void setArtworks_rectangle(Rectangle artworks_rectangle) {
-		this.artworks_rectangle = artworks_rectangle;
-	}
+	} 
 	public Integer getPic_width() {
 		return pic_width;
 	}
