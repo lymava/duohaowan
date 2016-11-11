@@ -10,58 +10,58 @@ import javax.imageio.ImageIO;
  * @author lymava
  *
  */
-public class Aartworks {
+public class AartworksBitemap {
 	
 	public static void main(String[] args) throws Exception {
 		
 		
-		Aartworks artworks = new Aartworks();
-		
-		URL resource = Aartworks.class.getClass().getResource("/file");
-		
-		
-		System.out.println(resource.getPath()+"/zuopin.jpg");
-		
-		
-		File artworks_pic_file = new File(resource.getPath()+"/zuopin.jpg");
-		File artworks_huakuang_file = new File(resource.getPath()+"/huakuang.jpg");
-		File artworks_beijing_file = new File(resource.getPath()+"/背景.jpg");
-		File artworks_kazhi1_file = new File(resource.getPath()+"/黄.jpg");
-		File artworks_kazhi2_file = new File(resource.getPath()+"/灰.jpg");
-		
-		Double artwork_bili = 0.8;
-		Double kazhi1_bili = 0.9;
-		Double kazhi2_bili = 0.95;
-		
-		BufferedImage artworks_pic_bufferedImage = ImageIO.read(artworks_pic_file);
-		BufferedImage artworks_huakuang_bufferedImage = ImageIO.read(artworks_huakuang_file);
-		BufferedImage artworks_beijing_bufferedImage = ImageIO.read(artworks_beijing_file);
-		BufferedImage artworks_kazhi1_bufferedImage = ImageIO.read(artworks_kazhi1_file);
-		BufferedImage artworks_kazhi2_bufferedImage = ImageIO.read(artworks_kazhi2_file);
-		
-		Rectangle searchRectangleOne_old = ImageUtil.searchRectangleOne(artworks_huakuang_bufferedImage);
-		
-		Rectangle backgroundWall_position = ImageUtil.searchRectangleOne(artworks_beijing_bufferedImage);
-		
-		Rectangle artwork_rectangle = ImageUtil.resizeRectangle(searchRectangleOne_old, artwork_bili);
-		Rectangle kazhi1_rectangle = ImageUtil.resizeRectangle(searchRectangleOne_old, kazhi1_bili);
-		Rectangle kazhi2_rectangle = ImageUtil.resizeRectangle(searchRectangleOne_old, kazhi2_bili);
-		
-		long currentTimeMillis = System.currentTimeMillis();
-
-		
-		artworks.setArtworks_pic(artworks_pic_bufferedImage);
-		artworks.setBackgroundWall(artworks_beijing_bufferedImage);
-		artworks.setHuakuang(artworks_huakuang_bufferedImage);
-		artworks.setKazhi_1(artworks_kazhi1_bufferedImage);
-		artworks.setKazhi_2(artworks_kazhi2_bufferedImage);
-		
-		artworks.setArtworks_rectangle(artwork_rectangle);
-		artworks.setKazhi_1_position(kazhi1_rectangle);
-		artworks.setKazhi_2_position(kazhi2_rectangle);
-		artworks.setBackgroundWall_position(backgroundWall_position);
-		
-		BufferedImage finalBufferedImage = artworks.getFinalBufferedImage();
+//		AartworksBitemap artworks = new AartworksBitemap();
+//		
+//		URL resource = AartworksBitemap.class.getClass().getResource("/file");
+//		
+//		
+//		System.out.println(resource.getPath()+"/zuopin.jpg");
+//		
+//		
+//		File artworks_pic_file = new File(resource.getPath()+"/zuopin.jpg");
+//		File artworks_huakuang_file = new File(resource.getPath()+"/huakuang.jpg");
+//		File artworks_beijing_file = new File(resource.getPath()+"/背景.jpg");
+//		File artworks_kazhi1_file = new File(resource.getPath()+"/黄.jpg");
+//		File artworks_kazhi2_file = new File(resource.getPath()+"/灰.jpg");
+//		
+//		Double artwork_bili = 0.8;
+//		Double kazhi1_bili = 0.9;
+//		Double kazhi2_bili = 0.95;
+//		
+//		BufferedImage artworks_pic_bufferedImage = ImageIO.read(artworks_pic_file);
+//		BufferedImage artworks_huakuang_bufferedImage = ImageIO.read(artworks_huakuang_file);
+//		BufferedImage artworks_beijing_bufferedImage = ImageIO.read(artworks_beijing_file);
+//		BufferedImage artworks_kazhi1_bufferedImage = ImageIO.read(artworks_kazhi1_file);
+//		BufferedImage artworks_kazhi2_bufferedImage = ImageIO.read(artworks_kazhi2_file);
+//		
+//		Rectangle searchRectangleOne_old = ImageUtil.searchRectangleOne(artworks_huakuang_bufferedImage);
+//		
+//		Rectangle backgroundWall_position = ImageUtil.searchRectangleOne(artworks_beijing_bufferedImage);
+//		
+//		Rectangle artwork_rectangle = ImageUtil.resizeRectangle(searchRectangleOne_old, artwork_bili);
+//		Rectangle kazhi1_rectangle = ImageUtil.resizeRectangle(searchRectangleOne_old, kazhi1_bili);
+//		Rectangle kazhi2_rectangle = ImageUtil.resizeRectangle(searchRectangleOne_old, kazhi2_bili);
+//		
+//		long currentTimeMillis = System.currentTimeMillis();
+//
+//		
+//		artworks.setArtworks_pic(artworks_pic_bufferedImage);
+//		artworks.setBackgroundWall(artworks_beijing_bufferedImage);
+//		artworks.setHuakuang(artworks_huakuang_bufferedImage);
+//		artworks.setKazhi_1(artworks_kazhi1_bufferedImage);
+//		artworks.setKazhi_2(artworks_kazhi2_bufferedImage);
+//		
+//		artworks.setArtworks_rectangle(artwork_rectangle);
+//		artworks.setKazhi_1_position(kazhi1_rectangle);
+//		artworks.setKazhi_2_position(kazhi2_rectangle);
+//		artworks.setBackgroundWall_position(backgroundWall_position);
+//		
+//		BufferedImage finalBufferedImage = artworks.getFinalBufferedImage();
 		
 //		System.out.println(System.currentTimeMillis()-currentTimeMillis);
 //		

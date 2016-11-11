@@ -390,8 +390,7 @@ public class ImageUtil {
 			width = max_height/height * width;
 			height = max_height;
 		} 
-		
-		Image scaledInstance = image.getScaledInstance((int)width, (int)height, Image.SCALE_SMOOTH);
+		Image scaledInstance = image.getScaledInstance((int)width, (int)height, Image.SCALE_FAST);
 		return scaledInstance;
 	}
 	/**
@@ -416,7 +415,7 @@ public class ImageUtil {
 			height = max_height;
 		} 
 		
-		Image scaledInstance = image.getScaledInstance((int)width, (int)height, Image.SCALE_SMOOTH);
+		Image scaledInstance = image.getScaledInstance((int)width, (int)height, Image.SCALE_DEFAULT);
 		return scaledInstance;
 	}
 	

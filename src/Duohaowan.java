@@ -79,11 +79,21 @@ public class Duohaowan {
 		 //背景列表
 //		 String list_backgroundWall = list_backgroundWall();
 //		 System.out.println(list_backgroundWall); 
-		 //画框列表
-		 String list_paintingFrame = list_paintingFrame();
-		 System.out.println(list_paintingFrame); 
+		 //卡纸列表
+		 String list_kazhi = list_kazhi();
+		 System.out.println(list_kazhi); 
 	 } 
-	 
+	 /**
+		 * 卡纸列表
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String list_kazhi() throws Exception{
+			 entityParemeter_map.put("rootPubConlumnId", "58253865ef722c174838108a");
+			 String listPub = listPub();
+			 return listPub;
+		}
 	 /**
 		 * 画框列表
 		 * 
