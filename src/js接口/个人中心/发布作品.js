@@ -6,7 +6,7 @@
 /**
  * 请求参数
 var res = {
-	"name" : "作品名称",
+	"artworks_name" : "作品名称",
 	"years" : "年份作品简介",
 	"intro" : "作品简介",
 	"price_fen" : "100",
