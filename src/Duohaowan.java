@@ -80,8 +80,8 @@ public class Duohaowan {
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
 		 //背景列表
-//		 String list_backgroundWall = list_backgroundWall();
-//		 System.out.println(list_backgroundWall); 
+		 String list_backgroundWall = list_backgroundWall();
+		 System.out.println(list_backgroundWall); 
 		 //画框列表
 //		 String list_paintingFrame = list_paintingFrame();
 //		 System.out.println(list_paintingFrame); 
@@ -89,8 +89,8 @@ public class Duohaowan {
 //		 String list_kazhi = list_kazhi();
 //		 System.out.println(list_kazhi); 
 		 //发布展品
-		 String publish_artworks = publish_artworks();
-		 System.out.println(publish_artworks); 
+//		 String publish_artworks = publish_artworks();
+//		 System.out.println(publish_artworks); 
 		 
 		 
 	 } 
