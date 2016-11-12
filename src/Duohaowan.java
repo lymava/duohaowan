@@ -15,11 +15,11 @@ public class Duohaowan {
 	 /**
 	  * 服务器地址
 	  */
-//	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
+	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
 	 /**
 	  * 本地地址
 	  */
-	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
+//	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
 	 
 	 public static  Map<String,String> entityParemeter_map = new HashMap<String,String>();
 	 
@@ -80,14 +80,14 @@ public class Duohaowan {
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
 		 //背景列表
-		 String list_backgroundWall = list_backgroundWall();
-		 System.out.println(list_backgroundWall); 
+//		 String list_backgroundWall = list_backgroundWall();
+//		 System.out.println(list_backgroundWall); 
 		 //画框列表
 //		 String list_paintingFrame = list_paintingFrame();
 //		 System.out.println(list_paintingFrame); 
 		 //卡纸列表
-//		 String list_kazhi = list_kazhi();
-//		 System.out.println(list_kazhi); 
+		 String list_kazhi = list_kazhi();
+		 System.out.println(list_kazhi); 
 		 //发布展品
 //		 String publish_artworks = publish_artworks();
 //		 System.out.println(publish_artworks); 
@@ -107,7 +107,7 @@ public class Duohaowan {
 			
 			JsonObject jsonObject = new JsonObject();
 			
-			jsonObject.addProperty("name", "作品名称");
+			jsonObject.addProperty("artworks_name", "作品名称1");
 			jsonObject.addProperty("years", "年份作品简介");
 			jsonObject.addProperty("intro", "作品简介");
 			jsonObject.addProperty("price_fen", "100");
@@ -118,7 +118,7 @@ public class Duohaowan {
 			 * 5812ef8078e0802052dd7a31 绘画作品
 			 * 5812ef7878e0802052dd7a30	书法作品
 			 */
-			jsonObject.addProperty("backgroundWall_id","582166a1ef722c1052bbba04");
+			jsonObject.addProperty("backgroundWall_id","58268b59d6c4592590d7b27b");
 			
 			JsonArray artworksCompoment = new JsonArray();
 			
@@ -146,8 +146,8 @@ public class Duohaowan {
 			byte[] readByte = IOUtil.readByte("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/zuopin.jpg");
 			String encodeHexString = HexM.encodeHexString(readByte);
 			jsonObject_part.addProperty("artworks_pic", "<file>"+encodeHexString+"</file>");
-			jsonObject_part.addProperty("kazhi_1_id", "582538d9ef722c174838109b");
-			jsonObject_part.addProperty("paintingFrame_id", "5822e1f978e0802b1109c73e");
+			jsonObject_part.addProperty("kazhi_1_id", "5826768ed6c45921bce7919c");
+			jsonObject_part.addProperty("paintingFrame_id", "582678f2d6c45921bce791b1");
 			
 			//绘画
 //			jsonObject_part.addProperty("pubConlumnId","5812ef7878e0802052dd7a30");//书法
