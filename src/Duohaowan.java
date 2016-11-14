@@ -83,17 +83,42 @@ public class Duohaowan {
 //		 String list_backgroundWall = list_backgroundWall();
 //		 System.out.println(list_backgroundWall); 
 		 //画框列表
-//		 String list_paintingFrame = list_paintingFrame();
-//		 System.out.println(list_paintingFrame); 
+		 String list_paintingFrame = list_paintingFrame();
+		 System.out.println(list_paintingFrame); 
 		 //卡纸列表
 //		 String list_kazhi = list_kazhi();
 //		 System.out.println(list_kazhi); 
 		 //发布展品
 //		 String publish_artworks = publish_artworks();
 //		 System.out.println(publish_artworks); 
-		 
+		 //画框种类列表
+//		 String list_paintingFrameConlumn = list_paintingFrameConlumn();
+//		 System.out.println(list_paintingFrameConlumn); 
 		 
 	 } 
+	 
+		/**
+		 * 画框类别列表
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String list_paintingFrameConlumn() throws Exception{
+			 entityParemeter_map.put("pubConlumnId", "58293eadef722c116fe22066");
+			 String listPub = listPub();
+			 return listPub;
+		}
+	 /**
+		 * 画框列表
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String list_paintingFrame() throws Exception{
+			 entityParemeter_map.put("pubConlumnId", "58214abdd6c45965757937e5");
+			 String listPub = listPub();
+			 return listPub;
+		}
 	 
 	 	/**
 		 * 发布展品
@@ -180,17 +205,6 @@ public class Duohaowan {
 		 */
 		private static String list_kazhi() throws Exception{
 			 entityParemeter_map.put("rootPubConlumnId", "58253865ef722c174838108a");
-			 String listPub = listPub();
-			 return listPub;
-		}
-	 /**
-		 * 画框列表
-		 * 
-		 * @return
-		 * @throws Exception
-		 */
-		private static String list_paintingFrame() throws Exception{
-			 entityParemeter_map.put("rootPubConlumnId", "58214a83d6c45965757937da");
 			 String listPub = listPub();
 			 return listPub;
 		}
