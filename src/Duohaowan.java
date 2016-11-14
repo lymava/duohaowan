@@ -116,6 +116,7 @@ public class Duohaowan {
 		 */
 		private static String list_paintingFrame() throws Exception{
 			 entityParemeter_map.put("pubConlumnId", "58214abdd6c45965757937e5");
+			 entityParemeter_map.put("paintingFrameConlumn_id", "58296cfaef722c193b8deaa9");
 			 String listPub = listPub();
 			 return listPub;
 		}

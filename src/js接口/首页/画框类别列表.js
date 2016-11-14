@@ -15,7 +15,7 @@
 /**
  * 参数值
  * 
- * pubConlumnId			58293eadef722c116fe22066	//画框
+ * pubConlumnId			58293eadef722c116fe22066	//画框类别
  */
 // 返回样例 {"statusCode":"300","message":"错误原因！"}//错误
 // 返回结果
