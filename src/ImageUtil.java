@@ -1,5 +1,4 @@
 
-
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -24,52 +23,89 @@ public class ImageUtil {
 	public static void main(String[] args) throws Exception {
 //		String srcImageFile = "/home/lymava/简介.jpg";
 //		String result = "/home/lymava/简介1.jpg";
-		
 //		resizeMax(srcImageFile, result, 500, 500);
-		
-		
-		File file = new File("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/画框新.jpg");
-//		
+		File file = new File("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/画框.jpg");
 		File file_zuopin = new File("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/zuopin.jpg");
-//		
+		
 		FileOutputStream file_zuopin_out = new FileOutputStream("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/out.jpg");
+//		
+//		Color color_test = Color.decode("0x"+"300f30");
+//		
+//		System.out.println(color_test);
+		
+		int suofang_width = 500;
+		int suofang_height = 500;
 //		
 		BufferedImage backGroudImage = ImageIO.read(file);
 		
-		List<Rectangle> searchRectangleList = searchRectangleList(backGroudImage);
+		BufferedImage bufferedImage = getScaledBufferedImage(backGroudImage, suofang_width, suofang_height);
 		
-		Rectangle findRectangle = searchRectangleList.get(0);
 		
-		System.out.println(findRectangle);
+//		List<Rectangle> searchRectangleList = searchRectangleList(backGroudImage);
+//		
+//		Rectangle findRectangle = searchRectangleList.get(0);
+//		System.out.println(findRectangle);
 		
-		BufferedImage bufferedImage_input = ImageIO.read(file_zuopin);
-		
-		Double suofang = null;
-		 
-		BufferedImage imageSynthesis = imageSynthesis(backGroudImage, bufferedImage_input,findRectangle,suofang);
-
+//		Double suofang = 0.5;
+//		
+//		Rectangle resizeRectangle = resizeRectangle(findRectangle, suofang);
+//		
+//		System.out.println(findRectangle);
+//		
+//		BufferedImage bufferedImage_input = ImageIO.read(file_zuopin);
+//		
+//		
+//		 
+//		BufferedImage imageSynthesis = imageSynthesis(backGroudImage, bufferedImage_input,findRectangle,suofang);
+//		
+//		for(int i=0;i<5;i++){
+//			Rectangle changeRectangle = changeRectangle(resizeRectangle, i);
+//			
+//			System.out.println(changeRectangle);
+//			
+//			drawRect(imageSynthesis, changeRectangle, color_test);
+//		}
+//
+//
 		boolean hasNotAlpha = !backGroudImage.getColorModel().hasAlpha();
+//		
+        ImageIO.write(bufferedImage, hasNotAlpha ? "jpg" : "png", file_zuopin_out);
+	}
+	
+	public static void drawRect(BufferedImage bufferedImage,Rectangle resizeRectangle,Color color_new){
 		
-        ImageIO.write(imageSynthesis, hasNotAlpha ? "jpg" : "png", file_zuopin_out);
+		Graphics graphics = bufferedImage.getGraphics();
+		
+		int x = (int) resizeRectangle.getX();
+		int y = (int) resizeRectangle.getY();
+		int width = (int) resizeRectangle.getWidth();
+		int height = (int) resizeRectangle.getHeight();
+		
+		Color color = graphics.getColor();
+		
+		graphics.setColor(color_new);
+		graphics.drawRect(x, y, width, height);
+		graphics.setColor(color);
+		graphics.dispose();
 	}
 	
 	public static BufferedImage readBufferedImage(String path){
-		
-		File file = new File(path);
-		
-		if(!file.exists()){
-			return null;
-		}
-		
-		BufferedImage read = null;
-		try {
 			
-			read = ImageIO.read(file);
+			File file = new File(path);
 			
-		} catch (IOException e) {
+			if(!file.exists()){
+				return null;
+			}
+			
+			BufferedImage read = null;
+			try {
+				
+				read = ImageIO.read(file);
+				
+			} catch (IOException e) {
+			}
+			return read;
 		}
-		return read;
-	}
 	
 	public static  BufferedImage imageSynthesis(BufferedImage backGroudImage,BufferedImage bufferedImage_input,Rectangle findRectangle,Double suofang){
 		
@@ -98,14 +134,6 @@ public class ImageUtil {
     	 boolean write = ImageIO.write(bufferedImage, hasNotAlpha ? "jpg" : "png", output);
     	 
     	return write;
-    }
-    
-    public static Rectangle searchRectangleOne(BufferedImage bufferedImage){
-    	 List<Rectangle> searchRectangleList = searchRectangleList(bufferedImage);
-    	 if(searchRectangleList != null && searchRectangleList.size() > 0){
-    		 return searchRectangleList.get(0);
-    	 }
-    	 return null;
     }
     
     public static List<Rectangle> searchRectangleList(BufferedImage bufferedImage){
@@ -149,7 +177,6 @@ public class ImageUtil {
      * @return
      */
     public static Rectangle searchRectangle(BufferedImage bufferedImage,List<Rectangle> list_searchRectangle_notIn){
-		int white_rgb = Color.white.getRGB();
 		
 		int width = bufferedImage.getWidth();
 		int height = bufferedImage.getHeight();
@@ -174,13 +201,14 @@ public class ImageUtil {
 				}
 				if(!contains){
 					 int rgb = bufferedImage.getRGB(x, y);
-			          
-			          if(white_rgb == rgb){
-			        	  findRectangle = findRectangle(bufferedImage, x, y);
+					 
+					 if (isBlank(rgb)){
+						  findRectangle = findRectangle(bufferedImage, x, y);
 			        	  if(findRectangle != null && findRectangle.getWidth() > 50 && findRectangle.getHeight() > 50){
 			        		  break;
 			        	  }
-			          }
+		             }
+					  
 				}
 				
 			}
@@ -200,15 +228,25 @@ public class ImageUtil {
 		return searchRectangle;
 	}
 	
+	public static boolean isBlank(int rgb){
+		
+		int white_rgb = Color.white.getRGB();
+		
+        int red = (rgb & 0xff0000 ) >> 16 ;
+        int green = (rgb & 0xff00 ) >> 8 ;
+        int blue = (rgb & 0xff );
+        
+		
+		return rgb >>24 != 0 || white_rgb == rgb ;
+	}
+	
 	public static Rectangle findRectangle(BufferedImage bufferedImage,int x,int y){
 		
-		 	int white_rgb = Color.white.getRGB();
-		 	
 		 	int rgb = bufferedImage.getRGB(x, y);
 		 	
-		    if(white_rgb != rgb){
-	        	 return null;
-	        }
+			if (!isBlank(rgb)){ 
+				 return null;
+            }
 		 
 			int width = bufferedImage.getWidth();
 			int height = bufferedImage.getHeight();
@@ -240,10 +278,9 @@ public class ImageUtil {
 				          int green = (rgb & 0xff00 ) >> 8 ;
 				          int blue = (rgb & 0xff );
 						
-					    if(red < 220 || green < 220 || blue < 220){
-					    	height_ok = true;
-					    	break;
-				        }
+				          if (red < 220 || green < 220 || blue < 220){
+						 	height_ok = true;
+			              } 
 					}
 				}
 				
@@ -253,15 +290,14 @@ public class ImageUtil {
 					for(int i=y;i<y+height_max;i++){
 						
 						rgb = bufferedImage.getRGB(width_tmp, i);
-					    
-					    int red = (rgb & 0xff0000 ) >> 16 ;
+						
+				          int red = (rgb & 0xff0000 ) >> 16 ;
 				          int green = (rgb & 0xff00 ) >> 8 ;
 				          int blue = (rgb & 0xff );
-						
-					    if(red < 220 || green < 220 || blue < 220){
-					    	width_ok = true;
-					    	break;
-				        }
+					    
+						if (red < 220 || green < 220 || blue < 220){
+							 height_ok = true;
+			             }
 					}
 				}
 				//y轴
@@ -308,7 +344,65 @@ public class ImageUtil {
         graphics.dispose();
         return backGroudImage;
 	}
-	
+	/**
+	 * 根据传送进来的值 来修改形状
+	 * @param rectangle
+	 * @param xiangsu	像素
+	 * @return
+	 */
+	public static Rectangle changeRectangle(Rectangle rectangle,Integer xiangsu){
+		
+		int x = (int) rectangle.getX();
+		
+		int y = (int) rectangle.getY();
+		
+		int height = (int) rectangle.getHeight();
+		
+		int width = (int) rectangle.getWidth();
+		
+		x -=xiangsu;
+		y -=xiangsu;
+		
+		height = (int) (height+xiangsu*2);
+		width = (int) (width+xiangsu*2);
+		 
+		Rectangle rectangle_return = new Rectangle(x, y, width, height);
+		
+		return rectangle_return;
+	}
+public static Rectangle resizeRectangle(Rectangle rectangle,Integer max_width,Integer max_height){
+		
+		int x = (int) rectangle.getX();
+		
+		int y = (int) rectangle.getY();
+		
+		int width = (int) rectangle.getWidth();
+		int height = (int) rectangle.getHeight();
+		
+		if(width > max_width){
+			height = max_width* height/width ;
+			width = max_width;
+		} 
+		
+		if(height > max_height){
+			width = max_height* width/height ;
+			height = max_height;
+		} 
+		
+		if(width < max_width && height < max_height ){
+			height = height*max_width/width;
+			width = max_width;
+			
+			if(height > max_height){
+				width = width*max_height/height;
+				height = max_height;
+			}
+		}
+		
+		Rectangle rectangle_return = new Rectangle(x, y, width, height);
+		
+		return rectangle_return;
+	}
 	public static Rectangle resizeRectangle(Rectangle rectangle,Double bili){
 	
 		int x = (int) rectangle.getX();
@@ -393,25 +487,67 @@ public class ImageUtil {
 	 * @param max_height
 	 * @return
 	 */
-	public static Image  getScaledInstanceMax(Image image,Rectangle rectangle){
+	public static Rectangle  getJuzhongRectangle(Rectangle rectangle_old,int width,int height){
 		
-		double max_width = rectangle.getWidth();
-		double max_height = rectangle.getHeight();
+		int max_width = (int) rectangle_old.getWidth();
+		int max_height = (int) rectangle_old.getHeight();
 		
-		double width = image.getWidth(null);
-		double height = image.getHeight(null);
+		int x_zuopin = (int) rectangle_old.getX();
+		int y_zuopin =   (int) rectangle_old.getY();
 		
 		if(width > max_width){
-			height = max_width/width * height;
+			height = max_width* height/width ;
 			width = max_width;
 		} 
-		
 		if(height > max_height){
-			width = max_height/height * width;
+			width = max_height* width/height ;
 			height = max_height;
-		} 
-		Image scaledInstance = image.getScaledInstance((int)width, (int)height, Image.SCALE_FAST);
-		return scaledInstance;
+		}
+		
+        if(max_width > width){
+        	x_zuopin +=  (max_width-width)/2;
+        }
+        if(max_height > height){
+        	y_zuopin +=  (max_height-height)/2;
+        }
+        
+        Rectangle rectangle = new Rectangle();
+        rectangle.setBounds(x_zuopin, y_zuopin, width, height);
+		return rectangle;
+	}
+	/**
+	 * 根据根据最大宽高 保持比例缩放图片
+	 * @param image
+	 * @param max_width
+	 * @param max_height
+	 * @return
+	 */
+	public static Image  getScaledInstanceMax(Image image,Rectangle rectangle){
+		
+		int max_width = (int) rectangle.getWidth();
+		int max_height = (int) rectangle.getHeight();
+		
+		return getScaledInstanceMax(image, max_width, max_height);
+	}
+	/**
+	 * 根据根据最大宽高 保持比例缩放图片
+	 * @param image
+	 * @param max_width
+	 * @param max_height
+	 * @return
+	 */
+	public static BufferedImage  getScaledBufferedImage(BufferedImage image,Integer max_width,Integer max_height){
+		Image scaledInstanceMax = getScaledInstanceMax(image, max_width, max_height);
+		if(scaledInstanceMax != null){
+			
+			BufferedImage bufferedImage  = new BufferedImage(scaledInstanceMax.getWidth(null), scaledInstanceMax.getHeight(null), image.getType());
+			Graphics graphics = bufferedImage.getGraphics();
+			graphics.drawImage(scaledInstanceMax, 0, 0, null);
+			graphics.dispose();
+			
+			return bufferedImage;
+		}
+		return null;
 	}
 	/**
 	 * 根据根据最大宽高 保持比例缩放图片
@@ -422,20 +558,31 @@ public class ImageUtil {
 	 */
 	public static Image  getScaledInstanceMax(Image image,Integer max_width,Integer max_height){
 		
-		double width = image.getWidth(null);
-		double height = image.getHeight(null);
+		int width = image.getWidth(null);
+		int height = image.getHeight(null);
 		
 		if(width > max_width){
-			height = max_width/width * height;
+			height = max_width* height/width ;
 			width = max_width;
 		} 
 		
 		if(height > max_height){
-			width = max_height/height * width;
+			width = max_height* width/height ;
 			height = max_height;
 		} 
 		
-		Image scaledInstance = image.getScaledInstance((int)width, (int)height, Image.SCALE_DEFAULT);
+		if(width < max_width && height < max_height ){
+			height = height*max_width/width;
+			width = max_width;
+			
+			if(height > max_height){
+				width = width*max_height/height;
+				height = max_height;
+			}
+		}
+		
+		
+		Image scaledInstance = image.getScaledInstance((int)width, (int)height, Image.SCALE_SMOOTH);
 		return scaledInstance;
 	}
 	
@@ -589,7 +736,6 @@ public class ImageUtil {
             graphics.dispose();
             ImageIO.write(tag, hasNotAlpha ? "jpg" : "png", output);
         } catch (Exception e) {
-        	e.printStackTrace();
             throw e;
         } finally {
         	if(output != null){
@@ -636,7 +782,6 @@ public class ImageUtil {
             
             ImageIO.write(tag, hasAlpha ? "png" : "jpg", output);
         } catch (Exception e) {
-        	e.printStackTrace();
             throw new Exception(e);
         } finally {
         	if(input != null){

@@ -47,8 +47,7 @@ var result = {
 							"height" : "345",
 							"backgroundWall_id" : "5822e1f078e0802b1109c732"
 						} ]
-					},
-					{
+					},{
 						"id" : "582166a1ef722c1052bbba04",
 						"pub_id" : "582166a1ef722c1052bbba04",
 						"name" : "测试背景",

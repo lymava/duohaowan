@@ -1,3 +1,4 @@
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.io.IOException;
 import java.net.URL;
@@ -96,6 +97,81 @@ public class Duohaowan {
 //		 System.out.println(list_paintingFrameConlumn); 
 		 
 	 } 
+	 /**
+	  * 
+	  * @param rectangle_backWall 视图的宽高,宽是屏幕宽度 高是自定义的
+	  * @param rectangle_image	图片的形状
+	  * @param rectangle_image_inner	图内部的画框的形状
+	  * @param point	点击的点
+	  */
+		public static boolean isPointClickOnImageInner(Rectangle rectangle_backWall,Rectangle rectangle_image,Rectangle rectangle_image_inner,Point click_point){
+			
+			int width = (int) rectangle_backWall.getWidth();
+			int height = (int) rectangle_backWall.getHeight();
+			
+			Rectangle resizeRectangle =  resizeRectangle(rectangle_image, width, height);
+			
+			double width_image_inner = rectangle_image_inner.getWidth();
+			
+			Rectangle resizeRectangle_mage_inner =  resizeRectangle(rectangle_image_inner, width_image_inner/resizeRectangle.getWidth());
+			
+			boolean contains = resizeRectangle_mage_inner.contains(click_point);
+			
+			return contains;
+		}
+		public static Rectangle resizeRectangle(Rectangle rectangle,Integer max_width,Integer max_height){
+			
+			int x = (int) rectangle.getX();
+			
+			int y = (int) rectangle.getY();
+			
+			int width = (int) rectangle.getWidth();
+			int height = (int) rectangle.getHeight();
+			
+			if(width > max_width){
+				height = max_width* height/width ;
+				width = max_width;
+			} 
+			
+			if(height > max_height){
+				width = max_height* width/height ;
+				height = max_height;
+			} 
+			
+			if(width < max_width && height < max_height ){
+				height = height*max_width/width;
+				width = max_width;
+				
+				if(height > max_height){
+					width = width*max_height/height;
+					height = max_height;
+				}
+			}
+			
+			Rectangle rectangle_return = new Rectangle(x, y, width, height);
+			
+			return rectangle_return;
+		}
+		public static Rectangle resizeRectangle(Rectangle rectangle,Double bili){
+			
+			int x = (int) rectangle.getX();
+			
+			int y = (int) rectangle.getY();
+			
+			int height = (int) rectangle.getHeight();
+			
+			int width = (int) rectangle.getWidth();
+			
+			x += width*(1-bili)/2;
+			y += height*(1-bili)/2;
+			
+			height = (int) (height*bili);
+			width = (int) (width*bili);
+			
+			Rectangle rectangle_return = new Rectangle(x, y, width, height);
+			
+			return rectangle_return;
+		}
 	 
 		/**
 		 * 画框类别列表
