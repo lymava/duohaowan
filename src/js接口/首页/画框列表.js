@@ -17,6 +17,9 @@
  * 
  * pubConlumnId						58214abdd6c45965757937e5	//画框
  * paintingFrameConlumn_id			//选取哪个类别就传哪个类别的值
+ * width					//宽度 像素(整数)
+ * height					//高度 像素(整数)
+ * 
  */
 // 返回样例 {"statusCode":"300","message":"错误原因！"}//错误
 // 返回结果
