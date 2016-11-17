@@ -15,7 +15,7 @@ var result = {
 						"id" : "58283fb8ef722c400404aa64",
 						"pub_id" : "58283fb8ef722c400404aa64",
 						"name" : "321321",
-						"state" : "1",
+						"state" : "1",  //(1/已发布)/(2/未发布)
 						"viewcount" : "0",
 						"nice_count" : "0",
 						"shoucang_count" : "0",
