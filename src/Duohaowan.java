@@ -74,7 +74,6 @@ public class Duohaowan {
 		 //收藏资讯
 //		 String shoucang_pub = shoucang_pub();
 //		 System.out.println(shoucang_pub);
-		 
 		 //作家列表页
 //		 entityParemeter_map.put("secondPubConlumnId", "581407b20e9f110d8cbbdb94");
 //		 entityParemeter_map.put("tag_string", "书法家");
@@ -84,8 +83,8 @@ public class Duohaowan {
 //		 String list_backgroundWall = list_backgroundWall();
 //		 System.out.println(list_backgroundWall); 
 		 //画框列表
-		 String list_paintingFrame = list_paintingFrame();
-		 System.out.println(list_paintingFrame); 
+//		 String list_paintingFrame = list_paintingFrame();
+//		 System.out.println(list_paintingFrame); 
 		 //卡纸列表
 //		 String list_kazhi = list_kazhi();
 //		 System.out.println(list_kazhi); 
@@ -95,8 +94,46 @@ public class Duohaowan {
 		 //画框种类列表
 //		 String list_paintingFrameConlumn = list_paintingFrameConlumn();
 //		 System.out.println(list_paintingFrameConlumn); 
-		 
+		 //我发布的作品
+//		 String list_artworks = list_artworks();
+//		 System.out.println(list_artworks);
+		 //我的评论
+		 String comment_list = comment_list();
+		 System.out.println(comment_list);
 	 } 
+	 /**
+		 * 我的作品列表
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String comment_list() throws Exception {
+
+			String urlString = baseUrl + "face/user/comment_list.do";
+			
+			JsonObject jsonObject = new JsonObject();
+			
+			String send_user_data = send_user_data(urlString, jsonObject.toString());
+
+			return send_user_data;
+		}
+	 
+	 	/**
+		 * 我的作品列表
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String list_artworks() throws Exception {
+
+			String urlString = baseUrl + "face/user/list_artworks.do";
+			
+			JsonObject jsonObject = new JsonObject();
+			
+			String send_user_data = send_user_data(urlString, jsonObject.toString());
+
+			return send_user_data;
+		}
 	 /**
 	  * 
 	  * @param rectangle_backWall 视图的宽高,宽是屏幕宽度 高是自定义的
@@ -192,7 +229,11 @@ public class Duohaowan {
 		 */
 		private static String list_paintingFrame() throws Exception{
 			 entityParemeter_map.put("pubConlumnId", "58214abdd6c45965757937e5");
-			 entityParemeter_map.put("paintingFrameConlumn_id", "58296cfaef722c193b8deaa9");
+//			 entityParemeter_map.put("paintingFrameConlumn_id", "58296cfaef722c193b8deaa9");
+			 
+			 entityParemeter_map.put("width", "100");
+			 entityParemeter_map.put("height", "800");
+			 
 			 String listPub = listPub();
 			 return listPub;
 		}
@@ -381,7 +422,8 @@ public class Duohaowan {
 			JsonObject jsonObject = new JsonObject();
 			
 			jsonObject.addProperty("pub_id", "58159b01d6c4596dd06bf7f9");
-			jsonObject.addProperty("content", "测试评论123fdsfds");
+			jsonObject.addProperty("comment_id", "581d465cd6c4593b2394cd89");
+			jsonObject.addProperty("content", "对评论回复测试评论123fdsfds");
 
 			String send_user_data = send_user_data(urlString, jsonObject.toString());
 
