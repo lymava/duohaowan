@@ -1,7 +1,7 @@
 /**
  * 我发布的作品列表页
  */
-// 地址 	{站点根目录}face/user/shoucang_pub.do
+// 地址 	{站点根目录}face/user/list_artworks.do
 // 请求方式 get/post 
 /**
  * 请求参数
