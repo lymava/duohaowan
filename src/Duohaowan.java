@@ -39,8 +39,8 @@ public class Duohaowan {
 //		 entityParemeter_map.put("pubConlumnId", "57fca5edef722c216b767c98");
 //		 String listPub_top = listPub();
 //		 System.out.println(listPub_top);
-		 //获取首页顶部新闻
-//		 entityParemeter_map.put("pubConlumnId", "57fca5ffef722c216b767c99");
+		 //获取首页顶部新闻 作家
+//		 entityParemeter_map.put("pubConlumnId", "581407b20e9f110d8cbbdb94");
 //		 String listPub_top_news = listPub();
 //		 System.out.println(listPub_top_news);
 		 //热门
@@ -98,11 +98,64 @@ public class Duohaowan {
 //		 String list_artworks = list_artworks();
 //		 System.out.println(list_artworks);
 		 //我的评论
-		 String comment_list = comment_list();
-		 System.out.println(comment_list);
+//		 String comment_list = comment_list();
+//		 System.out.println(comment_list);
+		 //提交意见反馈
+//		 String leaveMessage = leaveMessage();
+//		 System.out.println(leaveMessage);
+		 //获取用户的基础信息
+//		 String getUserInfo = getUserInfo();
+//		 System.out.println(getUserInfo);
+		// 更新用户的基础信息
+		 String updateSelf = updateSelf();
+		 System.out.println(updateSelf);
+		 //更新名片
+//		 String updateArtistCard = updateArtistCard();
+//		 System.out.println(updateArtistCard);
 	 } 
 	 /**
-		 * 我的作品列表
+		 * 提交意见反馈
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String updateArtistCard() throws Exception {
+
+			String urlString = baseUrl + "face/user/updateArtistCard.do";
+			
+			JsonObject jsonObject = new JsonObject();
+			
+			byte[] readByte = IOUtil.readByte("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/zuopin.jpg");
+			String encodeHexString = HexM.encodeHexString(readByte);
+			
+			jsonObject.addProperty("intro", "描述描述描述描述描述描述描述描述描述描述描述");
+			jsonObject.addProperty("pic", "<file>"+encodeHexString+"</file>");
+			
+			String send_user_data = send_user_data(urlString, jsonObject.toString());
+
+			return send_user_data;
+		}
+	 	/**
+		 * 提交意见反馈
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String leaveMessage() throws Exception {
+
+			String urlString = baseUrl + "face/user/leaveMessage.do";
+			
+			JsonObject jsonObject = new JsonObject();
+			
+			jsonObject.addProperty("title", "title");
+			jsonObject.addProperty("message", "message");
+			
+			String send_user_data = send_user_data(urlString, jsonObject.toString());
+
+			return send_user_data;
+		}
+	 /**
+		 * 我的评论列表
 		 * 
 		 * @return
 		 * @throws Exception
@@ -441,10 +494,10 @@ public class Duohaowan {
 			
 			JsonObject jsonObject = new JsonObject();
 			
-			jsonObject.addProperty("realname", "潘天寿");
-			jsonObject.addProperty("nickname", "潘潘");
-			jsonObject.addProperty("phone", "联系电话");
-			jsonObject.addProperty("addr", "地址");
+			jsonObject.addProperty("realname", "潘天寿1");
+			jsonObject.addProperty("nickname", "潘潘2");
+			jsonObject.addProperty("phone", "联系电话3");
+			jsonObject.addProperty("addr", "地址4");
 			jsonObject.addProperty("sheng", "省");
 			jsonObject.addProperty("shi", "市");
 			jsonObject.addProperty("birthDate", "出生日期");
