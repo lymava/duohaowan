@@ -101,8 +101,8 @@ public class Duohaowan {
 //		 String comment_list = comment_list();
 //		 System.out.println(comment_list);
 		 //提交意见反馈
-//		 String leaveMessage = leaveMessage();
-//		 System.out.println(leaveMessage);
+		 String leaveMessage = leaveMessage();
+		 System.out.println(leaveMessage);
 		 //获取用户的基础信息
 //		 String getUserInfo = getUserInfo();
 //		 System.out.println(getUserInfo);
@@ -113,9 +113,9 @@ public class Duohaowan {
 //		 String updateArtistCard = updateArtistCard();
 //		 System.out.println(updateArtistCard);
 		 //最新作品 
-		 entityParemeter_map.put("rootPubConlumnId", "58214a01d6c45965757937d3");
-		 String listPub = listPub();
-		 System.out.println(listPub); 
+//		 entityParemeter_map.put("rootPubConlumnId", "58214a01d6c45965757937d3");
+//		 String listPub = listPub();
+//		 System.out.println(listPub); 
 	 } 
 	 /**
 		 * 提交意见反馈
