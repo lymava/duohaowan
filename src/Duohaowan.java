@@ -80,8 +80,8 @@ public class Duohaowan {
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
 		 //背景列表
-		 String list_backgroundWall = list_backgroundWall();
-		 System.out.println(list_backgroundWall); 
+//		 String list_backgroundWall = list_backgroundWall();
+//		 System.out.println(list_backgroundWall); 
 		 //画框列表
 //		 String list_paintingFrame = list_paintingFrame();
 //		 System.out.println(list_paintingFrame); 
@@ -112,6 +112,10 @@ public class Duohaowan {
 		 //更新名片
 //		 String updateArtistCard = updateArtistCard();
 //		 System.out.println(updateArtistCard);
+		 //最新作品 
+		 entityParemeter_map.put("rootPubConlumnId", "58214a01d6c45965757937d3");
+		 String listPub = listPub();
+		 System.out.println(listPub); 
 	 } 
 	 /**
 		 * 提交意见反馈
@@ -388,7 +392,7 @@ public class Duohaowan {
 		private static String list_backgroundWall() throws Exception{
 			 entityParemeter_map.put("rootPubConlumnId", "58214a7dd6c45965757937d9");
 			 entityParemeter_map.put("width", "300");
-			 entityParemeter_map.put("height", "300");
+			 entityParemeter_map.put("height", "100");
 			 String listPub = listPub();
 			 return listPub;
 		}
