@@ -1,5 +1,7 @@
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -7,7 +9,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.util.Set;
 
@@ -53,7 +57,7 @@ public class Duohaowan {
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
 		 //获取作家 作品 新闻 的详情
-//		 entityParemeter_map.put("pub_id", "58159b01d6c4596dd06bf7f9");
+//		 entityParemeter_map.put("pub_id", "583284c4ef722c3907a03c41");
 //		 String get_pub = get_pub();
 //		 System.out.println(get_pub);
 		 //简洁登录
@@ -110,13 +114,88 @@ public class Duohaowan {
 //		 String updateSelf = updateSelf();
 //		 System.out.println(updateSelf);
 		 //更新名片
-		 String updateArtistCard = updateArtistCard();
-		 System.out.println(updateArtistCard);
+//		 String updateArtistCard = updateArtistCard();
+//		 System.out.println(updateArtistCard);
 		 //最新作品 
 //		 entityParemeter_map.put("rootPubConlumnId", "58214a01d6c45965757937d3");
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
+		 //分段上传文件
+		 String uploadChucks = uploadChucks();
+		 System.out.println(uploadChucks); 
 	 } 
+	 
+	 /**
+		 * 分段上传文件
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String uploadChucks() throws Exception {
+			
+			String filePath = "/home/lymava/1115_2.jpg";
+			Integer file_size = 1024*100;
+			
+			File file_input = new File(filePath);
+			
+			FileInputStream fis = new FileInputStream(file_input);
+			
+			byte[] file_bytes = new byte[file_size];
+			
+			Long chunks = file_input.length()/file_size;
+			if(file_input.length()%file_size != 0){
+				chunks += 1;
+			}
+			
+			Long chunk = 0l;
+			String name = file_input.getName();
+			
+			JsonParser jsonParser = new JsonParser();
+			
+			
+			Long had_upload = 0l;
+			while(had_upload < file_input.length()){
+				fis.read(file_bytes);
+				
+				String uploadChuckOne = uploadChuckOne(file_bytes, name, chunk, chunks);
+				/**
+				 * {"statusCode":"200","message":"上传成功!"}	上传单片
+				   {"data":{"fileName":"attachFiles/temp/bbd093b570e1201aa17b9f0b3be7960a"},"statusCode":"200","message":"上传成功!"}//上传完成
+				 */
+				
+				System.out.println(uploadChuckOne);
+				
+				had_upload += file_size;
+				chunk ++;
+			}
+			
+			fis.close();
+
+			return null;
+		}
+		
+		public static String uploadChuckOne(byte[] file_bytes,String name,Long chunk,Long chunks) throws Exception{
+			
+			String urlString = baseUrl + "front/uploadChucks.do";
+			
+			HttpPost hp = new HttpPost(new URL(urlString));
+			
+			entityParemeter_map.put("name", name);
+			entityParemeter_map.put("chunk", chunk+"");
+			entityParemeter_map.put("chunks", chunks+"");
+			
+			String file_string = HexM.encodeHexString(file_bytes);
+			entityParemeter_map.put("file_bytes", file_string);
+			
+			Set<Entry<String, String>> entrySet = entityParemeter_map.entrySet();
+			
+			for (Entry<String, String> entityKeyValue : entrySet) {
+				hp.addParemeter(entityKeyValue.getKey(), entityKeyValue.getValue()+"");
+			}
+			
+			String result = hp.getResult();
+			return result;
+		}
 	 /**
 		 * 提交意见反馈
 		 * 
@@ -482,8 +561,8 @@ public class Duohaowan {
 			
 			JsonObject jsonObject = new JsonObject();
 			
-			jsonObject.addProperty("pub_id", "58159b01d6c4596dd06bf7f9");
-			jsonObject.addProperty("comment_id", "581d465cd6c4593b2394cd89");
+			jsonObject.addProperty("pub_id", "583284c4ef722c3907a03c41");
+//			jsonObject.addProperty("comment_id", "581d465cd6c4593b2394cd89");
 			jsonObject.addProperty("content", "对评论回复测试评论123fdsfds");
 
 			String send_user_data = send_user_data(urlString, jsonObject.toString());
