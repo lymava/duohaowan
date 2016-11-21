@@ -57,7 +57,7 @@ public class Duohaowan {
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
 		 //获取作家 作品 新闻 的详情
-//		 entityParemeter_map.put("pub_id", "583284c4ef722c3907a03c41");
+//		 entityParemeter_map.put("pub_id", "5832b59dd6c4591f51473e9c");
 //		 String get_pub = get_pub();
 //		 System.out.println(get_pub);
 		 //简洁登录
@@ -121,10 +121,74 @@ public class Duohaowan {
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
 		 //分段上传文件
-		 String uploadChucks = uploadChucks();
-		 System.out.println(uploadChucks); 
+//		 String uploadChucks = uploadChucks();
+//		 System.out.println(uploadChucks); 
+		 //删除作品
+//		 String delete_artworks = delete_artworks();
+//		 System.out.println(delete_artworks); 
+		 //我的收藏列表
+		 String list_shoucang_pub = list_shoucang_pub();
+		 System.out.println(list_shoucang_pub);
+		 //收藏作家名片
+		 String shoucang_artistCard = shoucang_artistCard();
+		 System.out.println(shoucang_artistCard);
 	 } 
-	 
+	 /**
+		 * 收藏资讯
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String shoucang_artistCard() throws Exception {
+
+			String urlString = baseUrl + "face/user/shoucang_pub.do";
+			
+			JsonObject jsonObject = new JsonObject();
+			
+			jsonObject.addProperty("pub_id", "58140e880e9f1111781740a8");
+			jsonObject.addProperty("memo", "23备1注123");
+
+			String send_user_data = send_user_data(urlString, jsonObject.toString());
+
+			return send_user_data;
+		}
+	 /**
+		 * 我的收藏列表
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String list_shoucang_pub() throws Exception {
+
+			String urlString = baseUrl + "face/user/list_shoucang_pub.do";
+			
+			JsonObject jsonObject = new JsonObject();
+			
+//			jsonObject.addProperty("secondPubConlumnId", "5812ef5478e0802052dd7a2f");//收藏的作品
+			jsonObject.addProperty("secondPubConlumnId", "581407b20e9f110d8cbbdb94");//收藏的作家名片
+			
+			String send_user_data = send_user_data(urlString, jsonObject.toString());
+
+			return send_user_data;
+		}
+	 /**
+		 * 删除作品
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String delete_artworks() throws Exception {
+
+			String urlString = baseUrl + "face/user/delete_artworks.do";
+			
+			JsonObject jsonObject = new JsonObject();
+			
+			jsonObject.addProperty("artworks_id", "583284c4ef722c3907a03c41");
+			
+			String send_user_data = send_user_data(urlString, jsonObject.toString());
+
+			return send_user_data;
+		}
 	 /**
 		 * 分段上传文件
 		 * 
@@ -134,7 +198,7 @@ public class Duohaowan {
 		private static String uploadChucks() throws Exception {
 			
 			String filePath = "/home/lymava/1115_2.jpg";
-			Integer file_size = 1024*100;
+			Integer file_size = 1024*500;
 			
 			File file_input = new File(filePath);
 			
@@ -211,9 +275,14 @@ public class Duohaowan {
 			byte[] readByte = IOUtil.readByte("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/zuopin.jpg");
 			String encodeHexString = HexM.encodeHexString(readByte);
 			
+			byte[] readByte_touxiang = IOUtil.readByte("/home/lymava/workhome/program/开发项目/林多好玩/首页720/热门1.jpg");
+			String encodeHexString_touxiang = HexM.encodeHexString(readByte_touxiang);
+			
+			
+			
 			jsonObject.addProperty("intro", "321述描321");
 			jsonObject.addProperty("pic", "<file>"+encodeHexString+"</file>");
-			jsonObject.addProperty("pic_touxiang", "<file>"+encodeHexString+"</file>");
+			jsonObject.addProperty("pic_touxiang", "<file>"+encodeHexString_touxiang+"</file>");
 			jsonObject.addProperty("touxian", "测试头衔");
 			
 			String send_user_data = send_user_data(urlString, jsonObject.toString());
@@ -472,8 +541,8 @@ public class Duohaowan {
 		 */
 		private static String list_backgroundWall() throws Exception{
 			 entityParemeter_map.put("rootPubConlumnId", "58214a7dd6c45965757937d9");
-			 entityParemeter_map.put("width", "300");
-			 entityParemeter_map.put("height", "100");
+//			 entityParemeter_map.put("width", "300");
+//			 entityParemeter_map.put("height", "100");
 			 String listPub = listPub();
 			 return listPub;
 		}
@@ -489,8 +558,8 @@ public class Duohaowan {
 			
 			JsonObject jsonObject = new JsonObject();
 			
-			jsonObject.addProperty("pub_id", "58159b01d6c4596dd06bf7f9");
-			jsonObject.addProperty("memo", "备注");
+			jsonObject.addProperty("pub_id", "58326d78ef722c322164ce7d");
+			jsonObject.addProperty("memo", "备注123");
 
 			String send_user_data = send_user_data(urlString, jsonObject.toString());
 

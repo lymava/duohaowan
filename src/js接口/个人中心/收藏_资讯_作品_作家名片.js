@@ -1,5 +1,5 @@
 /**
- * 收藏_资讯_作品
+ * 收藏_资讯_作品_作家名片
  */
 // 地址 	{站点根目录}face/user/shoucang_pub.do
 // 请求方式 get/post 
