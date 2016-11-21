@@ -16,11 +16,11 @@ public class Duohaowan {
 	 /**
 	  * 服务器地址
 	  */
-	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
+//	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
 	 /**
 	  * 本地地址
 	  */
-//	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
+	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
 	 
 	 public static  Map<String,String> entityParemeter_map = new HashMap<String,String>();
 	 
@@ -101,8 +101,8 @@ public class Duohaowan {
 //		 String comment_list = comment_list();
 //		 System.out.println(comment_list);
 		 //提交意见反馈
-		 String leaveMessage = leaveMessage();
-		 System.out.println(leaveMessage);
+//		 String leaveMessage = leaveMessage();
+//		 System.out.println(leaveMessage);
 		 //获取用户的基础信息
 //		 String getUserInfo = getUserInfo();
 //		 System.out.println(getUserInfo);
@@ -110,8 +110,8 @@ public class Duohaowan {
 //		 String updateSelf = updateSelf();
 //		 System.out.println(updateSelf);
 		 //更新名片
-//		 String updateArtistCard = updateArtistCard();
-//		 System.out.println(updateArtistCard);
+		 String updateArtistCard = updateArtistCard();
+		 System.out.println(updateArtistCard);
 		 //最新作品 
 //		 entityParemeter_map.put("rootPubConlumnId", "58214a01d6c45965757937d3");
 //		 String listPub = listPub();
@@ -132,8 +132,10 @@ public class Duohaowan {
 			byte[] readByte = IOUtil.readByte("/home/lymava/workhome/program/开发项目/林多好玩/测试合成/zuopin.jpg");
 			String encodeHexString = HexM.encodeHexString(readByte);
 			
-			jsonObject.addProperty("intro", "描述描述描述描述描述描述描述描述描述描述描述");
+			jsonObject.addProperty("intro", "321述描321");
 			jsonObject.addProperty("pic", "<file>"+encodeHexString+"</file>");
+			jsonObject.addProperty("pic_touxiang", "<file>"+encodeHexString+"</file>");
+			jsonObject.addProperty("touxian", "测试头衔");
 			
 			String send_user_data = send_user_data(urlString, jsonObject.toString());
 
