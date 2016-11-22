@@ -20,11 +20,11 @@ public class Duohaowan {
 	 /**
 	  * 服务器地址
 	  */
-//	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
+	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
 	 /**
 	  * 本地地址
 	  */
-	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
+//	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
 	 
 	 public static  Map<String,String> entityParemeter_map = new HashMap<String,String>();
 	 
@@ -57,9 +57,9 @@ public class Duohaowan {
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
 		 //获取作家 作品 新闻 的详情
-//		 entityParemeter_map.put("pub_id", "5832b59dd6c4591f51473e9c");
-//		 String get_pub = get_pub();
-//		 System.out.println(get_pub);
+		 entityParemeter_map.put("pub_id", "5833dd6fd6c45923374bed6a");
+		 String get_pub = get_pub();
+		 System.out.println(get_pub);
 		 //简洁登录
 //		 String login_simple = login_simple();
 //		 System.out.println(login_simple);
@@ -137,9 +137,9 @@ public class Duohaowan {
 //		 String list_artGallery = list_artGallery();
 //		 System.out.println(list_artGallery);
 		 //展馆详情
-		 entityParemeter_map.put("pub_id", "581ef1c8d6c4594f90fa046e");
-		 String get_artGallery = get_pub();
-		 System.out.println(get_artGallery);
+//		 entityParemeter_map.put("pub_id", "581ef1c8d6c4594f90fa046e");
+//		 String get_artGallery = get_pub();
+//		 System.out.println(get_artGallery);
 	 } 
 	 /**
 		 * 获取展馆列表

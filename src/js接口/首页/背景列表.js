@@ -11,6 +11,8 @@
  * pubConlumnId 				产品分类
  * secondPubConlumnId			二级分类
  * thirdPubConlumnId			三级分类
+ * width					//宽度 像素(整数)
+ * height					//高度 像素(整数)
  */
 /**
  * 参数值
