@@ -57,9 +57,9 @@ public class Duohaowan {
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
 		 //获取作家 作品 新闻 的详情
-		 entityParemeter_map.put("pub_id", "5833dd6fd6c45923374bed6a");
-		 String get_pub = get_pub();
-		 System.out.println(get_pub);
+//		 entityParemeter_map.put("pub_id", "5833dd6fd6c45923374bed6a");
+//		 String get_pub = get_pub();
+//		 System.out.println(get_pub);
 		 //简洁登录
 //		 String login_simple = login_simple();
 //		 System.out.println(login_simple);
@@ -114,8 +114,8 @@ public class Duohaowan {
 //		 String updateSelf = updateSelf();
 //		 System.out.println(updateSelf);
 		 //更新名片
-//		 String updateArtistCard = updateArtistCard();
-//		 System.out.println(updateArtistCard);
+		 String updateArtistCard = updateArtistCard();
+		 System.out.println(updateArtistCard);
 		 //最新作品 
 //		 entityParemeter_map.put("rootPubConlumnId", "58214a01d6c45965757937d3");
 //		 String listPub = listPub();

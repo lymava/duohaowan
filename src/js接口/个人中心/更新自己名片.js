@@ -5,6 +5,7 @@
 // 请求方式 get/post 
 /**
  * 请求参数
+ * name		名称
  * touxian	用户头衔
  * intro	描述
  * pic		<file>名片背景(先将图片读入二进制数组/然后再base64)</file>
