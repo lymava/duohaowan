@@ -1,5 +1,5 @@
 /**
- * 画框列表
+ * 获取展馆列表
  */
 // 地址 	{站点根目录}front/list_pub.do
 // 请求方式 get/post 
@@ -15,6 +15,7 @@
 /**
  * 参数值
  * 
+ * secondPubConlumnId						581ef1a1d6c4594f90fa046c	//画框
  * secondPubConlumnId						581ef1a1d6c4594f90fa046c	//画框
  * 
  */
@@ -39,7 +40,8 @@ var result = {
 			"secondPubConlumnName" : "艺术馆",
 			"comment_list" : [],
 			"logo" : "attachFiles/temp/5833be56ef722c0f39aa761c",//logo
-			"jubanfang" : "江渝会馆"//举办方
+			"jubanfang" : "江渝会馆",//举办方
+			 "isShoucang" : "true"//是否已收藏关注
 		} ],
 		"page" : "1",
 		"lastPage" : "1",

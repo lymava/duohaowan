@@ -20,11 +20,11 @@ public class Duohaowan {
 	 /**
 	  * 服务器地址
 	  */
-	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
+//	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
 	 /**
 	  * 本地地址
 	  */
-//	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
+	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
 	 
 	 public static  Map<String,String> entityParemeter_map = new HashMap<String,String>();
 	 
@@ -114,8 +114,8 @@ public class Duohaowan {
 //		 String updateSelf = updateSelf();
 //		 System.out.println(updateSelf);
 		 //更新名片
-		 String updateArtistCard = updateArtistCard();
-		 System.out.println(updateArtistCard);
+//		 String updateArtistCard = updateArtistCard();
+//		 System.out.println(updateArtistCard);
 		 //最新作品 
 //		 entityParemeter_map.put("rootPubConlumnId", "58214a01d6c45965757937d3");
 //		 String listPub = listPub();
@@ -133,17 +133,19 @@ public class Duohaowan {
 //		 String shoucang_artistCard = shoucang_artistCard();
 //		 System.out.println(shoucang_artistCard);
 		 //艺术馆列表
-//		 entityParemeter_map.put("secondPubConlumnId", "581ef1a1d6c4594f90fa046c");
-//		 String list_artGallery = list_artGallery();
-//		 System.out.println(list_artGallery);
+		 entityParemeter_map.put("secondPubConlumnId", "581ef1a1d6c4594f90fa046c");
+		 String list_artGallery = list_artGallery();
+		 System.out.println(list_artGallery);
 	 } 
 	 /**
-		 * 获取内容列表
+		 * 获取展馆列表
 		 * 
 		 * @return
 		 * @throws Exception
 		 */
 		private static String list_artGallery() throws Exception {
+			
+			init_login();
 
 			String urlString = baseUrl + "front/list_pub.do";
 
@@ -172,7 +174,7 @@ public class Duohaowan {
 			
 			JsonObject jsonObject = new JsonObject();
 			
-			jsonObject.addProperty("pub_id", "58140e880e9f1111781740a8");
+			jsonObject.addProperty("pub_id", "581ef1c8d6c4594f90fa046e");
 			jsonObject.addProperty("memo", "23备1注123");
 
 			String send_user_data = send_user_data(urlString, jsonObject.toString());
@@ -727,6 +729,16 @@ public class Duohaowan {
 
 			return result;
 		}
+		
+		public static void init_login(){
+			 String randCode = System.currentTimeMillis()+"";
+			String user_sign = Md5Util.MD5Normal(login_key+randCode.toLowerCase());
+			
+			
+			entityParemeter_map.put("login_name", login_name);
+			entityParemeter_map.put("randCode", randCode);
+			entityParemeter_map.put("user_sign", user_sign);
+		}
 		/**
 		 * 获取内容详情
 		 * 
@@ -735,13 +747,7 @@ public class Duohaowan {
 		 */
 		private static String get_pub() throws Exception {
 			
-			 String randCode = System.currentTimeMillis()+"";
-			String user_sign = Md5Util.MD5Normal(login_key+randCode.toLowerCase());
-			
-			
-			entityParemeter_map.put("login_name", login_name);
-			entityParemeter_map.put("randCode", randCode);
-			entityParemeter_map.put("user_sign", user_sign);
+			init_login();
 
 			String urlString = baseUrl + "front/get_pub.do";
 

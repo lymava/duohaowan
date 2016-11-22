@@ -17,6 +17,8 @@
  * 参数值
  * 
  * secondPubConlumnId  						5812ef5478e0802052dd7a2f
+ * tag_string								标签名称	画廊/艺术馆
+ * 
  */
 // 返回样例 {"statusCode":"300","message":"错误原因！"}//错误
 // 返回结果
