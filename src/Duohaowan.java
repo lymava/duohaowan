@@ -133,9 +133,13 @@ public class Duohaowan {
 //		 String shoucang_artistCard = shoucang_artistCard();
 //		 System.out.println(shoucang_artistCard);
 		 //艺术馆列表
-		 entityParemeter_map.put("secondPubConlumnId", "581ef1a1d6c4594f90fa046c");
-		 String list_artGallery = list_artGallery();
-		 System.out.println(list_artGallery);
+//		 entityParemeter_map.put("secondPubConlumnId", "581ef1a1d6c4594f90fa046c");
+//		 String list_artGallery = list_artGallery();
+//		 System.out.println(list_artGallery);
+		 //展馆详情
+		 entityParemeter_map.put("pub_id", "581ef1c8d6c4594f90fa046e");
+		 String get_artGallery = get_pub();
+		 System.out.println(get_artGallery);
 	 } 
 	 /**
 		 * 获取展馆列表
