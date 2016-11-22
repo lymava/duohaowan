@@ -80,7 +80,7 @@ public class Duohaowan {
 //		 System.out.println(shoucang_pub);
 		 //作家列表页
 //		 entityParemeter_map.put("secondPubConlumnId", "581407b20e9f110d8cbbdb94");
-//		 entityParemeter_map.put("tag_string", "书法家");
+//		 entityParemeter_map.put("tag_string", "书法家");//国画,油画,书法
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
 		 //背景列表
@@ -127,12 +127,39 @@ public class Duohaowan {
 //		 String delete_artworks = delete_artworks();
 //		 System.out.println(delete_artworks); 
 		 //我的收藏列表
-		 String list_shoucang_pub = list_shoucang_pub();
-		 System.out.println(list_shoucang_pub);
+//		 String list_shoucang_pub = list_shoucang_pub();
+//		 System.out.println(list_shoucang_pub);
 		 //收藏作家名片
-		 String shoucang_artistCard = shoucang_artistCard();
-		 System.out.println(shoucang_artistCard);
+//		 String shoucang_artistCard = shoucang_artistCard();
+//		 System.out.println(shoucang_artistCard);
+		 //艺术馆列表
+		 entityParemeter_map.put("secondPubConlumnId", "581ef1a1d6c4594f90fa046c");
+		 String list_artGallery = list_artGallery();
+		 System.out.println(list_artGallery);
 	 } 
+	 /**
+		 * 获取内容列表
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String list_artGallery() throws Exception {
+
+			String urlString = baseUrl + "front/list_pub.do";
+
+			HttpPost hp = new HttpPost(new URL(urlString));
+			
+			Set<Entry<String, String>> entrySet = entityParemeter_map.entrySet();
+			for (Entry<String, String> entityKeyValue : entrySet) {
+				hp.addParemeter(entityKeyValue.getKey(), entityKeyValue.getValue()+"");
+			}
+			
+			hp.addParemeter("page", "1");
+			hp.addParemeter("pageSize", "15");
+			String result = hp.getResult();
+
+			return result;
+		}
 	 /**
 		 * 收藏资讯
 		 * 
@@ -280,6 +307,7 @@ public class Duohaowan {
 			
 			
 			
+			jsonObject.addProperty("name", "潘大总管");
 			jsonObject.addProperty("intro", "321述描321");
 			jsonObject.addProperty("pic", "<file>"+encodeHexString+"</file>");
 			jsonObject.addProperty("pic_touxiang", "<file>"+encodeHexString_touxiang+"</file>");
