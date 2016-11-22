@@ -20,11 +20,11 @@ public class Duohaowan {
 	 /**
 	  * 服务器地址
 	  */
-//	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
+	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
 	 /**
 	  * 本地地址
 	  */
-	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
+//	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
 	 
 	 public static  Map<String,String> entityParemeter_map = new HashMap<String,String>();
 	 
@@ -114,8 +114,8 @@ public class Duohaowan {
 //		 String updateSelf = updateSelf();
 //		 System.out.println(updateSelf);
 		 //更新名片
-//		 String updateArtistCard = updateArtistCard();
-//		 System.out.println(updateArtistCard);
+		 String updateArtistCard = updateArtistCard();
+		 System.out.println(updateArtistCard);
 		 //最新作品 
 //		 entityParemeter_map.put("rootPubConlumnId", "58214a01d6c45965757937d3");
 //		 String listPub = listPub();
@@ -133,9 +133,9 @@ public class Duohaowan {
 //		 String shoucang_artistCard = shoucang_artistCard();
 //		 System.out.println(shoucang_artistCard);
 		 //艺术馆列表
-		 entityParemeter_map.put("secondPubConlumnId", "581ef1a1d6c4594f90fa046c");
-		 String list_artGallery = list_artGallery();
-		 System.out.println(list_artGallery);
+//		 entityParemeter_map.put("secondPubConlumnId", "581ef1a1d6c4594f90fa046c");
+//		 String list_artGallery = list_artGallery();
+//		 System.out.println(list_artGallery);
 	 } 
 	 /**
 		 * 获取内容列表
