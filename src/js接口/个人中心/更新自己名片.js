@@ -5,10 +5,10 @@
 // 请求方式 get/post 
 /**
  * 请求参数
- * name		名称
- * touxian	用户头衔
- * intro	描述
- * pic		<file>名片背景(先将图片读入二进制数组/然后再base64)</file>
+ * nick_name			名称
+ * touxian		用户头衔
+ * intro		描述
+ * pic			<file>名片背景(先将图片读入二进制数组/然后再base64)</file>
  * pic_touxiang	<file>名片背景(先将图片读入二进制数组/然后再base64)</file>
  */
 // 返回样例 {"statusCode":"300","message":"错误原因！"}//错误
@@ -16,4 +16,4 @@
 var result = {
 		"statusCode" : "200",
 		"message" : "操作成功"
-	}
+}

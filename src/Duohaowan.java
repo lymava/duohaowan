@@ -223,7 +223,7 @@ public class Duohaowan {
 			return send_user_data;
 		}
 	 /**
-		 * 分段上传文件
+		 * 分段上传文件：《
 		 * 
 		 * @return
 		 * @throws Exception
@@ -313,7 +313,7 @@ public class Duohaowan {
 			
 			
 			
-			jsonObject.addProperty("name", "潘大总管");
+			jsonObject.addProperty("nick_name", "潘大总管");
 			jsonObject.addProperty("intro", "321述描321");
 			jsonObject.addProperty("pic", "<file>"+encodeHexString+"</file>");
 			jsonObject.addProperty("pic_touxiang", "<file>"+encodeHexString_touxiang+"</file>");
