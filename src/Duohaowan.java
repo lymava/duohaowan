@@ -142,9 +142,14 @@ public class Duohaowan {
 //		 System.out.println(get_artGallery);
 		 
 //		 entityParemeter_map.put("pubConlumnId", "5833e686d6c4592b41d886ef");//艺术观 现实篇
-		 entityParemeter_map.put("pubConlumnId", "5833e67ed6c4592b41d886ee");// 艺术观 史学篇
-		 String list_artview = list_artview();
-		 System.out.println(list_artview);
+//		 entityParemeter_map.put("pubConlumnId", "5833e67ed6c4592b41d886ee");// 艺术观 史学篇
+//		 String list_artview = list_artview();
+//		 System.out.println(list_artview);
+		 //查询作家的作品
+		 entityParemeter_map.put("artist_id", "5815be4ed6c459747a637852");//作家编号
+		 entityParemeter_map.put("secondPubConlumnId", "5812ef5478e0802052dd7a2f");//作品 类别编号
+		 String listPub = listPub();
+		 System.out.println(listPub); 
 	 } 
 	 /**
 		 * 获取展馆列表
@@ -206,7 +211,7 @@ public class Duohaowan {
 			
 			JsonObject jsonObject = new JsonObject();
 			
-			jsonObject.addProperty("pub_id", "581ef1c8d6c4594f90fa046e");
+			jsonObject.addProperty("pub_id", "5815bbafd6c459747a637851");
 			jsonObject.addProperty("memo", "23备1注123");
 
 			String send_user_data = send_user_data(urlString, jsonObject.toString());
