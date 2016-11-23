@@ -6,6 +6,7 @@
 /**
  * 请求参数
  * secondPubConlumnId	 581407b20e9f110d8cbbdb94	收藏的作家
+ * secondPubConlumnId	 5812ef5478e0802052dd7a2f	收藏的作品
  */
 // 返回样例 {"statusCode":"300","message":"错误原因！"}//错误
 // 返回结果
