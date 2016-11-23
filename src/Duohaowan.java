@@ -20,11 +20,11 @@ public class Duohaowan {
 	 /**
 	  * 服务器地址
 	  */
-	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
+//	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
 	 /**
 	  * 本地地址
 	  */
-//	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
+	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
 	 
 	 public static  Map<String,String> entityParemeter_map = new HashMap<String,String>();
 	 
@@ -114,8 +114,8 @@ public class Duohaowan {
 //		 String updateSelf = updateSelf();
 //		 System.out.println(updateSelf);
 		 //更新名片
-		 String updateArtistCard = updateArtistCard();
-		 System.out.println(updateArtistCard);
+//		 String updateArtistCard = updateArtistCard();
+//		 System.out.println(updateArtistCard);
 		 //最新作品 
 //		 entityParemeter_map.put("rootPubConlumnId", "58214a01d6c45965757937d3");
 //		 String listPub = listPub();
@@ -140,7 +140,35 @@ public class Duohaowan {
 //		 entityParemeter_map.put("pub_id", "581ef1c8d6c4594f90fa046e");
 //		 String get_artGallery = get_pub();
 //		 System.out.println(get_artGallery);
+		 
+//		 entityParemeter_map.put("pubConlumnId", "5833e686d6c4592b41d886ef");//艺术观 现实篇
+		 entityParemeter_map.put("pubConlumnId", "5833e67ed6c4592b41d886ee");// 艺术观 史学篇
+		 String list_artview = list_artview();
+		 System.out.println(list_artview);
 	 } 
+	 /**
+		 * 获取展馆列表
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String list_artview() throws Exception {
+			
+			String urlString = baseUrl + "front/list_pub.do";
+
+			HttpPost hp = new HttpPost(new URL(urlString));
+			
+			Set<Entry<String, String>> entrySet = entityParemeter_map.entrySet();
+			for (Entry<String, String> entityKeyValue : entrySet) {
+				hp.addParemeter(entityKeyValue.getKey(), entityKeyValue.getValue()+"");
+			}
+			
+			hp.addParemeter("page", "1");
+			hp.addParemeter("pageSize", "15");
+			String result = hp.getResult();
+
+			return result;
+		}
 	 /**
 		 * 获取展馆列表
 		 * 
