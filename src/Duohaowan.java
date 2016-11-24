@@ -20,11 +20,11 @@ public class Duohaowan {
 	 /**
 	  * 服务器地址
 	  */
-//	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
+	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
 	 /**
 	  * 本地地址
 	  */
-	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
+//	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
 	 
 	 public static  Map<String,String> entityParemeter_map = new HashMap<String,String>();
 	 
@@ -40,9 +40,9 @@ public class Duohaowan {
 	 public static void main(String[] args) throws Exception {
 		 
 		 //获取首页顶部新闻
-//		 entityParemeter_map.put("pubConlumnId", "57fca5edef722c216b767c98");
-//		 String listPub_top = listPub();
-//		 System.out.println(listPub_top);
+		 entityParemeter_map.put("pubConlumnId", "57fca5edef722c216b767c98");
+		 String listPub_top = listPub();
+		 System.out.println(listPub_top);
 		 //获取首页顶部新闻 作家
 //		 entityParemeter_map.put("pubConlumnId", "581407b20e9f110d8cbbdb94");
 //		 String listPub_top_news = listPub();
@@ -57,7 +57,7 @@ public class Duohaowan {
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
 		 //获取作家 作品 新闻 的详情
-//		 entityParemeter_map.put("pub_id", "5833dd6fd6c45923374bed6a");
+//		 entityParemeter_map.put("pub_id", "5836ea91d6c4595a590b3b94");
 //		 String get_pub = get_pub();
 //		 System.out.println(get_pub);
 		 //简洁登录
