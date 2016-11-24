@@ -34,7 +34,13 @@ var result = {
 						"secondPubConlumnId" : "57fca5d9ef722c216b767c97",
 						"secondPubConlumnName" : "首页内容",
 						"thirdPubConlumnId" : "57fca5edef722c216b767c98",
-						"thirdPubConlumnName" : "首页图片滚动新闻"
+						"thirdPubConlumnName" : "首页图片滚动新闻",
+							"pub_link_id" : "58369797d6c4594e7509b91f",
+							"pub_link_name" : "刘新德",
+							"pub_link_secondPubConlumn_id" : "581407b20e9f110d8cbbdb94",
+							"pub_link_secondPubConlumn_name" : "作家名片",
+							"pub_link_pubConlumn_id" : "581407b20e9f110d8cbbdb94",
+							"pub_link_pubConlumn_name" : "作家名片"
 					},
 					{
 						"id" : "5812e1e378e0802052dd7a26",

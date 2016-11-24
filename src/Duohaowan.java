@@ -40,16 +40,15 @@ public class Duohaowan {
 	 public static void main(String[] args) throws Exception {
 		 
 		 //获取首页顶部新闻
-		 entityParemeter_map.put("pubConlumnId", "57fca5edef722c216b767c98");
-		 String listPub_top = listPub();
-		 System.out.println(listPub_top);
+//		 entityParemeter_map.put("pubConlumnId", "57fca5edef722c216b767c98");
+//		 String listPub_top = listPub();
+//		 System.out.println(listPub_top);
 		 //获取首页顶部新闻 作家
 //		 entityParemeter_map.put("pubConlumnId", "581407b20e9f110d8cbbdb94");
 //		 String listPub_top_news = listPub();
 //		 System.out.println(listPub_top_news);
 		 //热门
-//		 entityParemeter_map.put("rootPubConlumnId", "57fca56def722c216b767c91");
-//		 entityParemeter_map.put("tag_type", "2");
+//		 entityParemeter_map.put("pubConlumnId", "583662e6ef722c0b94b5bee9");
 //		 String listPub = listPub();
 //		 System.out.println(listPub);
 		 //最新作品 

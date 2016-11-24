@@ -14,6 +14,15 @@
  * thirdPubConlumnId			三级分类
  * sort_filed					排序字段(viewcount/nice_count)(浏览次数/点赞次数)
  * tag_type						标签 1/推荐	2/热门	3(热门+推荐)
+ * 
+ * 
+ * pub_link_secondPubConlumn_id
+ * 
+ * 	581ef1a1d6c4594f90fa046c	//艺术馆
+	581b09c7d6c45925f82e4917	//资讯
+	581407b20e9f110d8cbbdb94	//作家名片
+	5812ef5478e0802052dd7a2f	//艺术品
+
  */
 /**
  * 参数值
@@ -36,7 +45,13 @@ var result = {
 						"secondPubConlumnId" : "57fca5d9ef722c216b767c97",
 						"secondPubConlumnName" : "首页内容",
 						"thirdPubConlumnId" : "57fca5ffef722c216b767c99",
-						"thirdPubConlumnName" : "首页文字滚动资讯"
+						"thirdPubConlumnName" : "首页文字滚动资讯",
+						"pub_link_id" : "58369797d6c4594e7509b91f",
+						"pub_link_name" : "刘新德",
+						"pub_link_secondPubConlumn_id" : "581407b20e9f110d8cbbdb94",
+						"pub_link_secondPubConlumn_name" : "作家名片",
+						"pub_link_pubConlumn_id" : "581407b20e9f110d8cbbdb94",
+						"pub_link_pubConlumn_name" : "作家名片"
 					},
 					{
 						"id" : "5812cc1f78e0802052dd7a13",
