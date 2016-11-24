@@ -146,10 +146,10 @@ public class Duohaowan {
 //		 String list_artview = list_artview();
 //		 System.out.println(list_artview);
 		 //查询作家的作品
-		 entityParemeter_map.put("artist_id", "5815be4ed6c459747a637852");//作家编号
-		 entityParemeter_map.put("secondPubConlumnId", "5812ef5478e0802052dd7a2f");//作品 类别编号
-		 String listPub = listPub();
-		 System.out.println(listPub); 
+//		 entityParemeter_map.put("artist_id", "5815be4ed6c459747a637852");//作家编号
+//		 entityParemeter_map.put("secondPubConlumnId", "5812ef5478e0802052dd7a2f");//作品 类别编号
+//		 String listPub = listPub();
+//		 System.out.println(listPub); 
 	 } 
 	 /**
 		 * 获取展馆列表
@@ -531,6 +531,7 @@ public class Duohaowan {
 			jsonObject.addProperty("true_width", "100");//真实尺寸 厘米
 			jsonObject.addProperty("true_height", "500");//真实尺寸 厘米
 			jsonObject.addProperty("pubConlumnId","5812ef8078e0802052dd7a31");
+			jsonObject.addProperty("tag_string","标签1 标签2");//标签
 			/**
 			 * 5812ef8078e0802052dd7a31 绘画作品
 			 * 5812ef7878e0802052dd7a30	书法作品
