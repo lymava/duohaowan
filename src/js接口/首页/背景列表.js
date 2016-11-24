@@ -13,6 +13,7 @@
  * thirdPubConlumnId			三级分类
  * width					//宽度 像素(整数)
  * height					//高度 像素(整数)
+ * count					//背景图框的数量	1/单图   2/多图
  */
 /**
  * 参数值
