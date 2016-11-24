@@ -12,6 +12,15 @@
  * secondPubConlumnId			二级分类
  * thirdPubConlumnId			三级分类
  * sort_filed					排序字段
+ * 
+ * 
+ * pub_link_secondPubConlumn_id
+ * 
+ * 	581ef1a1d6c4594f90fa046c	//艺术馆
+	581b09c7d6c45925f82e4917	//资讯
+	581407b20e9f110d8cbbdb94	//作家名片
+	5812ef5478e0802052dd7a2f	//艺术品
+
  */
 /**
  * 参数值

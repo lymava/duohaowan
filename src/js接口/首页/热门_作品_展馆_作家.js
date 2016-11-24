@@ -27,8 +27,7 @@
 /**
  * 参数值
  * 
- * rootPubConlumnId  						57fca56def722c216b767c91
- * tag_type									2
+ * pubConlumnId  						583662e6ef722c0b94b5bee9
  */
 // 返回样例 {"statusCode":"300","message":"错误原因！"}//错误
 // 返回结果
