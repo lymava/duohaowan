@@ -17,6 +17,7 @@
  * 
  * pubConlumnId						58214abdd6c45965757937e5	//画框
  * paintingFrameConlumn_id			//选取哪个类别就传哪个类别的值
+ * backgroundWall_id				//背景编号
  * width					//宽度 像素(整数)
  * height					//高度 像素(整数)
  * 
