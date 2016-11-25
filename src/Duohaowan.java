@@ -39,12 +39,12 @@ public class Duohaowan {
 	 
 	 public static void main(String[] args) throws Exception {
 		 
-		 //获取首页顶部新闻
+		 //获取首页顶部图文新闻
 //		 entityParemeter_map.put("pubConlumnId", "57fca5edef722c216b767c98");
 //		 String listPub_top = listPub();
 //		 System.out.println(listPub_top);
-		 //获取首页顶部新闻 作家
-//		 entityParemeter_map.put("pubConlumnId", "581407b20e9f110d8cbbdb94");
+		 //获取首页顶部文字新闻
+//		 entityParemeter_map.put("pubConlumnId", "57fca5ffef722c216b767c99");
 //		 String listPub_top_news = listPub();
 //		 System.out.println(listPub_top_news);
 		 //热门
@@ -149,6 +149,11 @@ public class Duohaowan {
 //		 entityParemeter_map.put("secondPubConlumnId", "5812ef5478e0802052dd7a2f");//作品 类别编号
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
+		 
+		 //查询作家的作品
+		 entityParemeter_map.put("pubConlumnId", "5837f4a9d6c459629f57d307");//作品 类别编号
+		 String listPub = listPub();
+		 System.out.println(listPub); 
 	 } 
 	 /**
 		 * 获取展馆列表
@@ -697,8 +702,7 @@ public class Duohaowan {
 			
 			JsonObject jsonObject = new JsonObject();
 			
-			jsonObject.addProperty("pub_id", "583284c4ef722c3907a03c41");
-//			jsonObject.addProperty("comment_id", "581d465cd6c4593b2394cd89");
+			jsonObject.addProperty("pub_id", "58355ad0d6c459414ffd0bdb");
 			jsonObject.addProperty("content", "对评论回复测试评论123fdsfds");
 
 			String send_user_data = send_user_data(urlString, jsonObject.toString());
