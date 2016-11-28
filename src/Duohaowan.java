@@ -150,11 +150,14 @@ public class Duohaowan {
 //		 String list_artist = list_artist();
 //		 System.out.println(list_artist);
 		 //问学篇列表
-		 entityParemeter_map.put("pubConlumnId", "5833e68dd6c4592b41d886f0");
-		 entityParemeter_map.put("artist_id", "58159e67d6c4596dd06bf7fd");
-		 entityParemeter_map.put("artist_instructor_id", "58286542d6c45934ac9066d8");
-		 String listAskInstructor = listPub();
-		 System.out.println(listAskInstructor);
+//		 entityParemeter_map.put("pubConlumnId", "5833e68dd6c4592b41d886f0");
+//		 entityParemeter_map.put("artist_id", "58159e67d6c4596dd06bf7fd");
+//		 entityParemeter_map.put("artist_instructor_id", "58286542d6c45934ac9066d8");
+//		 String listAskInstructor = listPub();
+//		 System.out.println(listAskInstructor);
+		 //向导师提问
+		 String createAskInstructor = createAskInstructor();
+		 System.out.println(createAskInstructor);
 		 //展馆详情
 //		 entityParemeter_map.put("pub_id", "581ef1c8d6c4594f90fa046e");
 //		 String get_artGallery = get_pub();
@@ -174,6 +177,27 @@ public class Duohaowan {
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
 	 } 
+	 /**
+		 * 向导师提问
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String createAskInstructor() throws Exception {
+
+			String urlString = baseUrl + "face/user/createAskInstructor.do";
+			
+			JsonObject jsonObject = new JsonObject();
+			
+			
+			jsonObject.addProperty("name", "提问标题");
+			jsonObject.addProperty("intro", "321述描321");
+			jsonObject.addProperty("artist_instructor_id", "58286542d6c45934ac9066d8");
+			
+			String send_user_data = send_user_data(urlString, jsonObject.toString());
+
+			return send_user_data;
+		}
 	 /**
 		 * 获取展馆列表
 		 * 
