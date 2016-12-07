@@ -16,11 +16,12 @@
  * 参数值
  * 
  * pubConlumnId						581ef1a1d6c4594f90fa046c	//展馆类别(固定)
+ * tag_string	标签类别	预告	艺术馆	得艺艺术馆
  * 
  */
 // 返回样例 {"statusCode":"300","message":"错误原因！"}//错误
 // 返回结果
-var result =var res = {
+var result = {
 		"data" : [ {
 			"id" : "583bed93ef722c32795fe537",
 			"pub_id" : "583bed93ef722c32795fe537",

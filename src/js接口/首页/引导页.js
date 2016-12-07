@@ -15,7 +15,7 @@
 /**
  * 参数值
  * 
- * pubConlumnId			5837f4a9d6c459629f57d307	//卡纸根类别
+ * pubConlumnId			5837f4a9d6c459629f57d307	//引导页
  */
 // 返回样例 {"statusCode":"300","message":"错误原因！"}//错误
 // 返回结果
