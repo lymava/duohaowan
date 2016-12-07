@@ -20,7 +20,7 @@ public class Duohaowan {
 	 /**
 	  * 服务器地址
 	  */
-	 public static final String baseUrl = "http://121.40.177.251:3330/duohaowan/";
+	 public static final String baseUrl = "http://www.duohaowan.cn/";
 	 /**
 	  * 本地地址
 	  */
@@ -29,8 +29,8 @@ public class Duohaowan {
 	 public static  Map<String,String> entityParemeter_map = new HashMap<String,String>();
 	 
 	 
-	 public static final String login_name = "pantianshou";
-	 public static final String login_key = "829eb6b4b4a0f11a0f4a8714";
+	 public static final String login_name = "ED116AF860CB57FFECF79870C1942813";
+	 public static final String login_key = "4265853e47fc9027da631f95cfdc9584";
 	 public static final String userpwd = "123456";
 	 
 		public static final Integer client_type_xml = 1;
@@ -56,9 +56,9 @@ public class Duohaowan {
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
 		 //获取作家 作品 新闻 的详情
-//		 entityParemeter_map.put("pub_id", "5836ea91d6c4595a590b3b94");
-//		 String get_pub = get_pub();
-//		 System.out.println(get_pub);
+		 entityParemeter_map.put("pub_id", "58462281d6c45972f12f88c2");
+		 String get_pub = get_pub();
+		 System.out.println(get_pub);
 		 //简洁登录
 //		 String login_simple = login_simple();
 //		 System.out.println(login_simple);
@@ -156,8 +156,8 @@ public class Duohaowan {
 //		 String listAskInstructor = listPub();
 //		 System.out.println(listAskInstructor);
 		 //向导师提问
-		 String createAskInstructor = createAskInstructor();
-		 System.out.println(createAskInstructor);
+//		 String createAskInstructor = createAskInstructor();
+//		 System.out.println(createAskInstructor);
 		 //展馆详情
 //		 entityParemeter_map.put("pub_id", "581ef1c8d6c4594f90fa046e");
 //		 String get_artGallery = get_pub();
@@ -598,10 +598,11 @@ public class Duohaowan {
 		 */
 		private static String list_paintingFrame() throws Exception{
 			 entityParemeter_map.put("pubConlumnId", "58214abdd6c45965757937e5");
-//			 entityParemeter_map.put("paintingFrameConlumn_id", "58296cfaef722c193b8deaa9");
+			 entityParemeter_map.put("paintingFrameConlumn_id", "5832b5a3d6c4591f51473ea2");
+			 entityParemeter_map.put("backgroundWall_id", "583d93c2d6c4590ad35811f5");
 			 
-			 entityParemeter_map.put("width", "100");
-			 entityParemeter_map.put("height", "800");
+//			 entityParemeter_map.put("width", "100");
+//			 entityParemeter_map.put("height", "800");
 			 
 			 String listPub = listPub();
 			 return listPub;
