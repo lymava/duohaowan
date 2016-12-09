@@ -3,7 +3,10 @@ import java.awt.Rectangle;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -20,11 +23,11 @@ public class Duohaowan {
 	 /**
 	  * 服务器地址
 	  */
-	 public static final String baseUrl = "http://www.duohaowan.cn/";
+//	 public static final String baseUrl = "http://www.duohaowan.cn/";
 	 /**
 	  * 本地地址
 	  */
-//	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
+	 public static final String baseUrl = "http://localhost:8080/duohaowan/";
 	 
 	 public static  Map<String,String> entityParemeter_map = new HashMap<String,String>();
 	 
@@ -56,9 +59,9 @@ public class Duohaowan {
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
 		 //获取作家 作品 新闻 的详情
-		 entityParemeter_map.put("pub_id", "58462281d6c45972f12f88c2");
-		 String get_pub = get_pub();
-		 System.out.println(get_pub);
+//		 entityParemeter_map.put("pub_id", "58462281d6c45972f12f88c2");
+//		 String get_pub = get_pub();
+//		 System.out.println(get_pub);
 		 //简洁登录
 //		 String login_simple = login_simple();
 //		 System.out.println(login_simple);
@@ -176,7 +179,39 @@ public class Duohaowan {
 //		 entityParemeter_map.put("pubConlumnId", "5837f4a9d6c459629f57d307");//作品 类别编号
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
-	 } 
+		 //上传作品
+		 String uploadStream = uploadStream();
+		 System.out.println(uploadStream);
+	 }
+	 
+	 public static String uploadStream() throws Exception{
+			
+			String urlString = baseUrl + "front/uploadStream.do?name="+System.currentTimeMillis();
+			
+			String fileName = "/home/lymava/下载/0721_4.jpg";
+			
+			byte[] readByte = IOUtil.readByte(fileName);
+			
+			URL url = new URL(urlString);
+			
+			URLConnection openConnection = url.openConnection();
+			
+			openConnection.setDoOutput(true);
+			openConnection.setDoInput(true);
+			
+			OutputStream outputStream = openConnection.getOutputStream();
+			
+			outputStream.write(readByte);
+			outputStream.flush();
+			outputStream.close();
+			
+			InputStream inputStream = openConnection.getInputStream();
+			
+			byte[] result_byte = IOUtil.readByte(inputStream);
+			String result = new String(result_byte);
+			
+			return result;
+		}
 	 /**
 		 * 向导师提问
 		 * 
