@@ -32,8 +32,12 @@ public class Duohaowan {
 	 public static  Map<String,String> entityParemeter_map = new HashMap<String,String>();
 	 
 	 
-	 public static final String login_name = "ED116AF860CB57FFECF79870C1942813";
-	 public static final String login_key = "4265853e47fc9027da631f95cfdc9584";
+//	 public static final String login_name = "ED116AF860CB57FFECF79870C1942813";
+//	 public static final String login_key = "4265853e47fc9027da631f95cfdc9584";
+//	 public static final String userpwd = "123456";
+	 
+	 public static final String login_name = "18908397910";
+	 public static final String login_key = "bfb3b87b9a09196f82d47cea3f0bda32";
 	 public static final String userpwd = "123456";
 	 
 		public static final Integer client_type_xml = 1;
@@ -95,8 +99,8 @@ public class Duohaowan {
 //		 String list_kazhi = list_kazhi();
 //		 System.out.println(list_kazhi); 
 		 //发布展品
-//		 String publish_artworks = publish_artworks();
-//		 System.out.println(publish_artworks); 
+		 String publish_artworks = publish_artworks();
+		 System.out.println(publish_artworks); 
 		 //画框种类列表
 //		 String list_paintingFrameConlumn = list_paintingFrameConlumn();
 //		 System.out.println(list_paintingFrameConlumn); 
@@ -180,8 +184,8 @@ public class Duohaowan {
 //		 String listPub = listPub();
 //		 System.out.println(listPub); 
 		 //上传作品
-		 String uploadStream = uploadStream();
-		 System.out.println(uploadStream);
+//		 String uploadStream = uploadStream();
+//		 System.out.println(uploadStream);
 	 }
 	 
 	 public static String uploadStream() throws Exception{
@@ -667,7 +671,7 @@ public class Duohaowan {
 			 * 5812ef8078e0802052dd7a31 绘画作品
 			 * 5812ef7878e0802052dd7a30	书法作品
 			 */
-			jsonObject.addProperty("backgroundWall_id","58268b59d6c4592590d7b27b");
+			jsonObject.addProperty("backgroundWall_id","583d93c2d6c4590ad35811f5");
 			
 			JsonArray artworksCompoment = new JsonArray();
 			

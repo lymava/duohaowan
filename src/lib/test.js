@@ -1,2 +1,11 @@
-{ResponseInfo:com.qiniu.http.Response@6ebc05a6,status:579, reqId:fD8AAJAZ-3k2Vo4U, xlog:body:5;s.ph;s.put.tw:1;s.put.tr:9;s.put.tw:1;s.put.tr:10;s.ph;PFDS:15;PFDS:16;rdb.g/no such key;DBD/404;v4.exist/Document not found;rs27_18.ins/E11000 duplicate key error colle;rs27_18.find;rs27_18.sel;qtbl.ins:3/same entry;rs27_18.sel;qtbl.get;MQ;RS.not:;RS:5;rs.put:10;rs-upload.putFile:27;QINIUPROXY:63;UP.CB:64;up:/upload callback failed;UP:100/579;UP:101/579, xvia:, adress:up.qiniu.com/115.231.97.57:80, duration:0.000000 s, error:{"callback_url":"http://183.86.218.83:8080/qiniu_upload_call_back.jsp","callback_bodyType":"application/x-www-form-urlencoded","callback_body":"movieResouce_id=5849ff1d7ea6a975d9df7df3","token":"","err_code":200,"error":"unexpected response","hash":"Fnq6w4hXTmJTmfvMxncfgqliBGkc","key":"d7143f4c57f97998faa894c8e4cae7eb"}}
-{"error":"{\"callback_url\":\"http://183.86.218.83:8080/qiniu_upload_call_back.jsp\",\"callback_bodyType\":\"application/x-www-form-urlencoded\",\"callback_body\":\"movieResouce_id=5849ff1d7ea6a975d9df7df3\",\"token\":\"\",\"err_code\":200,\"error\":\"unexpected response\",\"hash\":\"Fnq6w4hXTmJTmfvMxncfgqliBGkc\",\"key\":\"d7143f4c57f97998faa894c8e4cae7eb\"}"}
+msg_signature=c83d557c9ca4fff6dc87d02adfb2091dd89487d1
+signature=d4345ab6d396977d49219c45e91e2fd0d1689997
+timestamp=1481381839
+encrypt_type=aes
+nonce=1195248428
+openid=oCa-DwhfpGhCE_0di_TULZ8xRpu8
+messageContent=<xml>
+    <ToUserName><![CDATA[gh_16a0635bef79]]></ToUserName>
+    <Encrypt><![CDATA[oGSXMLCUcnR5yvm7rlNd2KekzHjJ5jQsw75o4ShHt2kiFjuLraWrbDJBisZKsNEvXFekXjem/kdDde1s8nvWjQ2XbDjOHQ6w490F4uYjHD7cHZSZhoTW4HcVsDNOCtg30tMUxBQyyJqwmudauiXmarW6VkxH20MFOynzaBrpaWoAkiM3Rv39wbwA+4nD8P612IJvdmRHgS0/VQgPJcfG1hefT8fbcoJOc3G0U9gfjRVpCNJtEiRKDusdywVmVLkVIvhyy4JjPAe0rVeoI6PM/+FTfWjDwx2azZ+gCtO22dbrbzR6Ds9eamWisePlR/zoF7eXg1tMLqwyUp50OzTPWwGX4fwFemSmLEqdWfm9rTrNeIG9s3mIvbmInVRNGhnNihpXlFGAujZbBZDUOboVusIfKpW9ewRXlPLvBPwu/5k=]]></Encrypt>
+</xml>
+]
