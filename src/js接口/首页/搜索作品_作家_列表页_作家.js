@@ -19,6 +19,7 @@
  * secondPubConlumnId			5812ef5478e0802052dd7a2f	//搜索作品
  * secondPubConlumnId			581407b20e9f110d8cbbdb94	//搜索作家
  * tag							标签名称
+ * tag_string					标签字段
  */
 // 返回样例 {"statusCode":"300","message":"错误原因！"}//错误
 // 返回结果
