@@ -99,8 +99,8 @@ public class Duohaowan {
 //		 String list_kazhi = list_kazhi();
 //		 System.out.println(list_kazhi); 
 		 //发布展品
-		 String publish_artworks = publish_artworks();
-		 System.out.println(publish_artworks); 
+//		 String publish_artworks = publish_artworks();
+//		 System.out.println(publish_artworks); 
 		 //画框种类列表
 //		 String list_paintingFrameConlumn = list_paintingFrameConlumn();
 //		 System.out.println(list_paintingFrameConlumn); 
@@ -186,7 +186,56 @@ public class Duohaowan {
 		 //上传作品
 //		 String uploadStream = uploadStream();
 //		 System.out.println(uploadStream);
+		 //获取手机验证码
+//		 String getPhoneRand = getPhoneRand();
+//		 System.out.println(getPhoneRand);
+		 //创建支付订单
+		 String save_order = save_order();
+		 System.out.println(save_order);
 	 }
+		//余额支付
+		public static final Integer pay_method_balance=1;
+		//支付宝支付
+		public static final Integer pay_method_alipay=3;
+		//微信支付
+		public static final Integer pay_method_weipay=4;
+	 	/**
+		 * 保存订单
+		 * @return
+		 * @throws Exception
+		 */
+		private static String save_order() throws Exception {
+
+			String urlString = baseUrl + "face/user/save_order.do";
+			
+			JsonObject jsonObject = new JsonObject();
+			
+			
+			jsonObject.addProperty("peyMethod", pay_method_weipay);
+			jsonObject.addProperty("product_id", "5843fe6ad6c45972f12f87e2");
+			
+			String send_user_data = send_user_data(urlString, jsonObject.toString());
+
+			return send_user_data;
+		}
+	 /**
+		 * 获取手机验证码
+		 * 
+		 * @return
+		 * @throws Exception
+		 */
+		private static String getPhoneRand() throws Exception {
+
+			String urlString = baseUrl + "rand/getPhoneRand.do";
+			 
+			HttpGet hg = new HttpGet(urlString);
+			
+			hg.addParemeter("phone", "18908397910");
+			
+			String result = hg.getResult();
+
+			return result;
+		}
 	 
 	 public static String uploadStream() throws Exception{
 			
