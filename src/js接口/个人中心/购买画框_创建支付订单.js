@@ -18,16 +18,13 @@
 // 返回结果
 var result = {
 		"pay_data" : {
-			"return_code" : "SUCCESS",
-			"return_msg" : "OK",
 			"appid" : "wx622e032827e49132",
-			"mch_id" : "1420424402",
-			"device_info" : "WEB",
-			"nonce_str" : "92pkrkWS800uOGUY",
-			"sign" : "018DD92477928427176ECC36BB85CBF7",
-			"result_code" : "SUCCESS",
-			"prepay_id" : "wx20161218173615d2cd5eb5320654763907",
-			"trade_type" : "APP"
+			"partnerid" : "1420424402",
+			"prepay_id" : "wx20161219203456587bc4fb840733742514",
+			"package" : "Sign=WXPay",
+			"noncestr" : "123456",
+			"timestamp" : "1482150569",
+			"sign" : "341556F3B59207FFE24BBEBAF6237BCC"
 		},
 		"statusCode" : "200",
 		"message" : "操作成功！"
