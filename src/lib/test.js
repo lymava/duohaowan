@@ -1,11 +1,7 @@
-msg_signature=c83d557c9ca4fff6dc87d02adfb2091dd89487d1
-signature=d4345ab6d396977d49219c45e91e2fd0d1689997
-timestamp=1481381839
-encrypt_type=aes
-nonce=1195248428
-openid=oCa-DwhfpGhCE_0di_TULZ8xRpu8
-messageContent=<xml>
-    <ToUserName><![CDATA[gh_16a0635bef79]]></ToUserName>
-    <Encrypt><![CDATA[oGSXMLCUcnR5yvm7rlNd2KekzHjJ5jQsw75o4ShHt2kiFjuLraWrbDJBisZKsNEvXFekXjem/kdDde1s8nvWjQ2XbDjOHQ6w490F4uYjHD7cHZSZhoTW4HcVsDNOCtg30tMUxBQyyJqwmudauiXmarW6VkxH20MFOynzaBrpaWoAkiM3Rv39wbwA+4nD8P612IJvdmRHgS0/VQgPJcfG1hefT8fbcoJOc3G0U9gfjRVpCNJtEiRKDusdywVmVLkVIvhyy4JjPAe0rVeoI6PM/+FTfWjDwx2azZ+gCtO22dbrbzR6Ds9eamWisePlR/zoF7eXg1tMLqwyUp50OzTPWwGX4fwFemSmLEqdWfm9rTrNeIG9s3mIvbmInVRNGhnNihpXlFGAujZbBZDUOboVusIfKpW9ewRXlPLvBPwu/5k=]]></Encrypt>
-</xml>
-]
+var res = {
+	"request" : {
+		"requestFlow" : "584e557bef722c0c62b5d3ba",
+		"businessId" : "70001",
+		"priceFen" : "85"
+	}
+};

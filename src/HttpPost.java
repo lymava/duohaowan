@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.Proxy;
 import java.net.URL;
@@ -133,7 +134,13 @@ public class HttpPost{
 		    if (value == null) {
 		      value = "";
 		    }
-		    paremeter.append(name).append("=").append(URLEncoder.encode(value)).append("&");
+		    try {
+				String encode = URLEncoder.encode(value,charset);
+				 paremeter.append(name).append("=").append(encode).append("&");
+			} catch (Exception e) {
+			}
+		    
+		   
 	}
 	/**
 	 *  

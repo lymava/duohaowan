@@ -190,8 +190,14 @@ public class Duohaowan {
 //		 String getPhoneRand = getPhoneRand();
 //		 System.out.println(getPhoneRand);
 		 //创建支付订单
-		 String save_order = save_order();
-		 System.out.println(save_order);
+//		 String save_order = save_order();
+//		 System.out.println(save_order);
+		 //查询我有的礼物
+//		 String list_presents = list_presents();
+//		 System.out.println(list_presents);
+		 //送礼物
+		 String give_presents = give_presents();
+		 System.out.println(give_presents);
 	 }
 		//余额支付
 		public static final Integer pay_method_balance=1;
@@ -199,6 +205,40 @@ public class Duohaowan {
 		public static final Integer pay_method_alipay=3;
 		//微信支付
 		public static final Integer pay_method_weipay=4;
+		
+		/**
+		 * 查询我有的礼物
+		 * @return
+		 * @throws Exception
+		 */
+		private static String give_presents() throws Exception {
+
+			String urlString = baseUrl + "face/user/give_presents.do";
+			
+			JsonObject jsonObject = new JsonObject();
+			
+			jsonObject.addProperty("presents_id", "585801d0ef722c3e8798dc46");
+			jsonObject.addProperty("user_id", "584aac10d6c45941a3299312");
+			
+			String send_user_data = send_user_data(urlString, jsonObject.toString());
+
+			return send_user_data;
+		}
+		/**
+		 * 查询我有的礼物
+		 * @return
+		 * @throws Exception
+		 */
+		private static String list_presents() throws Exception {
+
+			String urlString = baseUrl + "face/user/list_presents.do";
+			
+			JsonObject jsonObject = new JsonObject();
+			
+			String send_user_data = send_user_data(urlString, jsonObject.toString());
+
+			return send_user_data;
+		}
 	 	/**
 		 * 保存订单
 		 * @return
@@ -674,6 +714,9 @@ public class Duohaowan {
 		 * @throws Exception
 		 */
 		private static String list_paintingFrameConlumn() throws Exception{
+			
+			init_login();
+			
 			 entityParemeter_map.put("pubConlumnId", "58293eadef722c116fe22066");
 			 String listPub = listPub();
 			 return listPub;
@@ -952,13 +995,13 @@ public class Duohaowan {
 		}
 		
 		public static void init_login(){
-			 String randCode = System.currentTimeMillis()+"";
+			String randCode = System.currentTimeMillis()+"";
 			String user_sign = Md5Util.MD5Normal(login_key+randCode.toLowerCase());
-			
 			
 			entityParemeter_map.put("login_name", login_name);
 			entityParemeter_map.put("randCode", randCode);
 			entityParemeter_map.put("user_sign", user_sign);
+			
 		}
 		/**
 		 * 获取内容详情
